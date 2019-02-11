@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="petclinic-mysql/Android_test/app/src/main/java"/>
+	<classpathentry kind="src" path="petclinic-mysql/Spring/src/main/java"/>
+	<classpathentry kind="src" path="Springboot/309_demo1/src/main/java"/>
+	<classpathentry kind="src" path="Springboot/309_demo1/src/test/java"/>
+	<classpathentry kind="lib" path="petclinic-mysql/Android_test/gradle/wrapper/gradle-wrapper.jar"/>
+	<classpathentry kind="lib" path="Springboot/309_demo1/.mvn/wrapper/maven-wrapper.jar"/>
+	<classpathentry kind="output" path="Springboot/309_demo1/target/classes"/>
+</classpath>

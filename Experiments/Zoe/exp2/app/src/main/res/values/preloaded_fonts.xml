@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <array name="preloaded_fonts" translatable="false">
+        <item>@font/averia_libre_bold</item>
         <item>@font/comfortaa_bold</item>
+        <item>@font/concert_one</item>
+        <item>@font/la_belle_aurore</item>
+        <item>@font/swanky_and_moo_moo</item>
         <item>@font/the_girl_next_door</item>
     </array>
 </resources>

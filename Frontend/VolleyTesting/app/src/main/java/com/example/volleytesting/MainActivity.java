@@ -63,9 +63,9 @@ public class MainActivity extends AppCompatActivity {
         //Map<String, String> params = new HashMap<>();
         JSONObject params = new JSONObject();
         try {
-            params.put("first_name", name);
-            params.put("last_name", password);
-            params.put("user_name", email);
+            params.put("firstName", name);
+            params.put("lastName", password);
+            params.put("userName", email);
             params.put("password", "123456");
             params.put("address", "uwbviugbw");
             params.put("telephone", "5152221111");

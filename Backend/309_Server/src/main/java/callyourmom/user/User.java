@@ -21,15 +21,15 @@ public class User {
     @NotFound(action = NotFoundAction.IGNORE)
     private Integer id;
 
-	@Column(name = "first_name")
+	@Column(name = "firstName")
     @NotFound(action = NotFoundAction.IGNORE)
     private String firstName;
 
-    @Column(name = "last_name")
+    @Column(name = "lastName")
     @NotFound(action = NotFoundAction.IGNORE)
     private String lastName;
     
-    @Column(name = "user_name")
+    @Column(name = "userName")
     @NotFound(action = NotFoundAction.IGNORE)
     private String userName;
     

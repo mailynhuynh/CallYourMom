@@ -5,8 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.RestController;
-
-import callyourmom.repository.UserRepository;
 import callyourmom.service.UserService;
 import callyourmom.user.User;
 
@@ -21,7 +19,7 @@ public class UserController {
 	}
 	
 	@GetMapping("/users/{id}")
-	User get(@PathVariable long id) {
+	User get(@PathVariable Integer id) {
 	    return userService.get(id);
 	}
 

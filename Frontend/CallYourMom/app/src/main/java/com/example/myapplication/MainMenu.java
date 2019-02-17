@@ -23,6 +23,18 @@ public class MainMenu extends AppCompatActivity
 
     @Override
     protectected void onCreate(Bundle savedInstanceState){
+        super.onCreate(saveInstanceState);
+        setContentView(R.layout.MainMenu);
+
+        b1 = (Button) findViewById(R.id.buttonMessage);
+        b2 = (Button) findViewById(R.id.buttonNext);
+
+        b1.setOnClickListener(new View.onClickListerer()){
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getApplicationContext(), "Hello ComS309", Toast.LENGTH_LONG).show();
+
+
 
             }
 

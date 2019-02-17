@@ -13,20 +13,20 @@ import callyourmom.user.User;
 @RestController
 public class UserController {
 	@Autowired // @Autowired attribute injects UserService into this class
-	UserRepository userRepository;
+	UserService userService;
 	
 	@GetMapping("/users")
-	Iterable<User> get() {
-	    return userRepository.findAll();
+	List<User> get() {
+	    return userService.getAll();
 	}
 	
 	@GetMapping("/users/{id}")
 	User get(@PathVariable long id) {
-	    return userRepository.findById(id).get();
+	    return userService.get(id);
 	}
 
 	@PostMapping("/users")
 	User post(@RequestBody User user) {
-	    return userRepository.save(user);
+	    return userService.create(user);
 	}
 }

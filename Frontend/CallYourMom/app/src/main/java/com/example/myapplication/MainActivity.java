@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }*/
-                        //This is single string
+                        //This is a single object
 
                         try {
 

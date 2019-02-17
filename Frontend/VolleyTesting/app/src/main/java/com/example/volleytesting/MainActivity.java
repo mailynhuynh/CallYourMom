@@ -18,6 +18,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
@@ -31,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
      */
     EditText name, email, password;
     Button save;
-    String url = "http://cs309-bs-3.misc.iastate.edu";
+    String url = "http://cs309-bs-3.misc.iastate.edu:8080/users/";
     RequestQueue queue;
     JsonObjectRequest request;
 
@@ -59,13 +60,20 @@ public class MainActivity extends AppCompatActivity {
 
     private void SendUser(String name, String email, String password)
     {
-        Map<String, String> params = new HashMap<>();
-        params.put("name",name);
-        params.put("password", password);
-        params.put("email",email);
+        //Map<String, String> params = new HashMap<>();
+        JSONObject params = new JSONObject();
+        try {
+            params.put("first_name", name);
+            params.put("last_name", password);
+            params.put("user_name", email);
+            params.put("password", "123456");
+            params.put("address", "uwbviugbw");
+            params.put("telephone", "5152221111");
+        }
+        catch (JSONException e) { e.printStackTrace(); }
 
         queue = Volley.newRequestQueue(MainActivity.this);
-        request = new JsonObjectRequest(Request.Method.POST, url, new JSONObject(params), new Response.Listener<JSONObject>() {
+        request = new JsonObjectRequest(Request.Method.POST, url, params, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 Log.d("JSONPost", response.toString());

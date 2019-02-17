@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
      */
     EditText name, email, password;
     Button save;
-    String url = "http://cs309-bs-3.misc.iastate.edu:8080/users/";
+    String url = "http://cs309-bs-3.misc.iastate.edu:8080/users";
     RequestQueue queue;
     JsonObjectRequest request;
 
@@ -63,12 +63,12 @@ public class MainActivity extends AppCompatActivity {
         //Map<String, String> params = new HashMap<>();
         JSONObject params = new JSONObject();
         try {
-            params.put("first_name", name);
-            params.put("last_name", password);
-            params.put("user_name", email);
-            params.put("password", "123456");
+            params.put("firstName", name);
+            params.put("lastName", password);
+            params.put("userName", email);
+            params.put("password", 13322);
             params.put("address", "uwbviugbw");
-            params.put("telephone", "5152221111");
+            params.put("telephone", "5155050743");
         }
         catch (JSONException e) { e.printStackTrace(); }
 
@@ -76,13 +76,14 @@ public class MainActivity extends AppCompatActivity {
         request = new JsonObjectRequest(Request.Method.POST, url, params, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
+                Toast.makeText(getApplicationContext(), response.toString(), Toast.LENGTH_LONG).show();
                 Log.d("JSONPost", response.toString());
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
 
-                VolleyLog.d("JSONPost", "Error: "+error.getMessage());
+                VolleyLog.d("JSONPost", "Error: "+error.toString());
             }
         });
         queue.add(request);

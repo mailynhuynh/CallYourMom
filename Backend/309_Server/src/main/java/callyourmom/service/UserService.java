@@ -15,18 +15,15 @@ public class UserService {
 	UserRepository userRepository;
 
 	public List<User> getAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return userRepository.findAll();
 	}
 
 	public User get(long id) {
 		// TODO Auto-generated method stub
-		return null;
+		return userRepository.getOne(id);
 	}
 
 	public User create(User user) {
-		// validate model
-		// authenticate user, etc
 		return userRepository.save(user);
 	}
 

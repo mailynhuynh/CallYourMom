@@ -18,8 +18,7 @@ public class UserService {
 		return userRepository.findAll();
 	}
 
-	public User get(long id) {
-		// TODO Auto-generated method stub
+	public User get(Integer id) {
 		return userRepository.getOne(id);
 	}
 

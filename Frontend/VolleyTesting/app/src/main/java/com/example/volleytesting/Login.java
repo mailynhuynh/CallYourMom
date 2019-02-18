@@ -81,11 +81,23 @@ public class Login extends AppCompatActivity {
         JSONObject params = new JSONObject();
         try {
             params.put("firstName", name);
+<<<<<<< HEAD:Frontend/VolleyTesting/app/src/main/java/com/example/volleytesting/Login.java
             params.put("lastName", lastName);
             params.put("userName", userName);
             params.put("password", password);
             params.put("address", email);
             params.put("telephone", phoneNum);
+=======
+            params.put("lastName", password);
+            params.put("userName", email);
+<<<<<<< HEAD
+            params.put("password", "123456");
+=======
+            params.put("password", 13322);
+>>>>>>> 0db396238f52408d9901d3627c6d1b5dee52efec
+            params.put("address", "uwbviugbw");
+            params.put("telephone", "5155050743");
+>>>>>>> fc950d332a51b566957b478152b25e967a1e1cb1:Frontend/VolleyTesting/app/src/main/java/com/example/volleytesting/MainActivity.java
         }
         catch (JSONException e) { e.printStackTrace(); }
 

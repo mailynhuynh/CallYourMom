@@ -12,7 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Friends"></activity>
+        <activity android:name=".Profile"></activity>
+        <activity android:name=".MainMenu" />
+        <activity android:name=".Friends" />
         <activity android:name=".Login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

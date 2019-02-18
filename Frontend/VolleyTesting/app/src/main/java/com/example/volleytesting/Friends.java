@@ -21,6 +21,10 @@ import org.json.JSONObject;
 
 import app.AppController;
 
+/**
+ * @author ZoeS
+ * This class is currently for connectivity demonstration purposes only. WILL become friends list.
+ */
 public class Friends extends AppCompatActivity {
 
     Button back;
@@ -55,7 +59,10 @@ public class Friends extends AppCompatActivity {
 
     }
 
-
+    /**
+     * Parses User JSON objects sent from Server.
+     * Displays first name, last name and phone number.
+     */
     private void parseJSONFriends()
     {
         String url = "http://cs309-bs-3.misc.iastate.edu:8080/users";
@@ -66,6 +73,7 @@ public class Friends extends AppCompatActivity {
             @Override
             public void onResponse(JSONArray response) {
 
+                //Loop to append all JSON objects in database to Textview
                 for(int i = 0; i < response.length(); i++)
                 {
                     try {
@@ -73,7 +81,7 @@ public class Friends extends AppCompatActivity {
 
                         String fName = obj.getString("firstName");
                         String lName = obj.getString("lastName");
-                        int phoneNum = obj.getInt("telephone");
+                        String phoneNum = obj.getString("telephone");
 
                         friends.append(fName+" "+lName+": Phone Number: "+phoneNum+"\n");
 

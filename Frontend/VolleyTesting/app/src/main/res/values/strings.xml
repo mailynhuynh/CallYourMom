@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">VolleyTesting</string>
+    <string name="Back">Back</string>
+    <string name="PROFILE">PROFILE</string>
+    <string name="Invite">Invite</string>
+    <string name="TagIn">TagIn</string>
+    <string name="Chat">Chat</string>
 </resources>

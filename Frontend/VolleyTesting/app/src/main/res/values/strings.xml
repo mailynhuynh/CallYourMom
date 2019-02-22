@@ -3,6 +3,8 @@
     <string name="Back">Back</string>
     <string name="PROFILE">PROFILE</string>
     <string name="Invite">Invite</string>
-    <string name="TagIn">TagIn</string>
+    <string name="TagIn">Tag In</string>
     <string name="Chat">Chat</string>
+    <string name="ProfilePage">Profile</string>
+    <string name="title_activity_chat">Chat</string>
 </resources>

@@ -57,24 +57,39 @@ public class Login extends AppCompatActivity {
         save = (Button) findViewById(R.id.save);
         displayFriends = findViewById(R.id.friends);
         login = findViewById(R.id.login);
-        //This button sends data to server
+        /* This button sends data to server */
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 final String username = name.getText().toString();
                 final String useremail = email.getText().toString();
-                // Validates the email is in the email format.
+                /* Validates the email is in the email format. */
                 if(!validateUserEmail(useremail)) {
                     Toast.makeText(getApplicationContext(), "Please enter a valid email address",
                             Toast.LENGTH_LONG).show();
                     email.getText().clear();
                     return;
                 }
-                //TODO validate password is numbers only
                 final String userpassword = password.getText().toString();
+                /* Validates password is only digits. */
+                if(!allNumbers(userpassword))
+                {
+                    Toast.makeText(getApplicationContext(), "Please enter a valid password (only numbers)",
+                            Toast.LENGTH_LONG).show();
+                    password.getText().clear();
+                    return;
+                }
                 final String lName = lastName.getText().toString();
-                //TODO validate follows format xxx-xxx-xxxx OR xxxxxxxxxx. If former format, parse into latter.
                 final String phoneNum = phoneNumber.getText().toString();
+                /* Validates phone number is in correct format. xxxxxxxxxx or xxx-xxx-xxxx */
+                if(!validPhone(phoneNum))
+                {
+                    Toast.makeText(getApplicationContext(), "Please enter a valid phone number",
+                            Toast.LENGTH_LONG).show();
+                    phoneNumber.getText().clear();
+                    return;
+                }
+
                 final String userN = userName.getText().toString();
 
                 SendUser(username, lName, useremail, phoneNum, userN, userpassword);
@@ -83,7 +98,7 @@ public class Login extends AppCompatActivity {
             }
         });
 
-        //This button switches to "Friends" page view
+        /* This button switches to "Friends" page view */
         displayFriends.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -93,7 +108,7 @@ public class Login extends AppCompatActivity {
 
             }
         });
-        //This button switches to Main Menu
+        /* This button switches to Main Menu */
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -168,10 +183,17 @@ public class Login extends AppCompatActivity {
             if(emailDot.length == 2)
             {
                 if(emailDot[1].length() == 3) { return true; }
+
             }
         }
         return false;
     }
+
+    /** Method to determine if a string is ALL numeric
+     *
+     * @param str -- String to be passed in
+     * @return -- True if all numeric, false otherwise
+     */
     private boolean allNumbers(String str)
     {
         for(int i = 0; i < str.length(); i++)
@@ -182,5 +204,25 @@ public class Login extends AppCompatActivity {
             }
         }
         return true;
+    }
+
+    /**
+     * Validates phone number is in correct form. EITHER xxxxxxxxxx OR xxx-xxx-xxxx
+     *
+     * @param phoneNum - String phone number
+     * @return - true if valid phone format, false otherwise.
+     */
+    private boolean validPhone(String phoneNum)
+    {
+        if(phoneNum.length() == 10) { return allNumbers(phoneNum); }
+        else if(phoneNum.length() == 12)
+        {
+            String[] phoneArray = phoneNum.split("-");
+            if(phoneArray.length != 3) { return false; }
+            else {
+                return allNumbers(phoneArray[0] + phoneArray[1] + phoneArray[2]);
+            }
+        }
+        return false;
     }
 }

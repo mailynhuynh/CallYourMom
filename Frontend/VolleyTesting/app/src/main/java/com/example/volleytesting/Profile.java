@@ -14,7 +14,7 @@ public class Profile extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
     }
 
-   b1 = (Button) findViewByID(R.id.Back);
+    b1 = (Button) findViewByID(R.id.Back);
     b2 = (Button) findViewByID(R.id.Back);
 
     b1.setOnClickLister(new View.OnClickListener(){

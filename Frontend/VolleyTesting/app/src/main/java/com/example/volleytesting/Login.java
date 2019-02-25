@@ -62,8 +62,14 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 final String username = name.getText().toString();
-                //TODO: Validate useremail is correct format (xxx__@xxx___.xxx)
                 final String useremail = email.getText().toString();
+                // Validates the email is in the email format.
+                if(!validateUserEmail(useremail)) {
+                    Toast.makeText(getApplicationContext(), "Please enter a valid email address",
+                            Toast.LENGTH_LONG).show();
+                    email.getText().clear();
+                    return;
+                }
                 //TODO validate password is numbers only
                 final String userpassword = password.getText().toString();
                 final String lName = lastName.getText().toString();
@@ -146,5 +152,35 @@ public class Login extends AppCompatActivity {
             }
         });
         queue.add(request);
+    }
+
+    /**
+     * Validates the user's email follows a 'xxx____@xxx___.xxx format.
+     *
+     * @param email
+     * @return True if email is valid, false otherwise
+     */
+    private boolean validateUserEmail(String email)
+    {
+        String[] emailArray = email.split("@");
+        if(emailArray.length == 2){
+            String[] emailDot = emailArray[1].split(".");
+            if(emailDot.length == 2)
+            {
+                if(emailDot[1].length() == 3) { return true; }
+            }
+        }
+        return false;
+    }
+    private boolean allNumbers(String str)
+    {
+        for(int i = 0; i < str.length(); i++)
+        {
+            if(!Character.isDigit(str.charAt(i)))
+            {
+                return false;
+            }
+        }
+        return true;
     }
 }

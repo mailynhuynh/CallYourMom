@@ -66,7 +66,7 @@ public class Login extends AppCompatActivity {
                 /* Validates the email is in the email format. */
                 if(!validateUserEmail(useremail)) {
                     Toast.makeText(getApplicationContext(), "Please enter a valid email address",
-                            Toast.LENGTH_LONG).show();
+                           Toast.LENGTH_LONG).show();
                     email.getText().clear();
                     return;
                 }
@@ -85,7 +85,7 @@ public class Login extends AppCompatActivity {
                 if(!validPhone(phoneNum))
                 {
                     Toast.makeText(getApplicationContext(), "Please enter a valid phone number",
-                            Toast.LENGTH_LONG).show();
+                           Toast.LENGTH_LONG).show();
                     phoneNumber.getText().clear();
                     return;
                 }
@@ -179,7 +179,8 @@ public class Login extends AppCompatActivity {
     {
         String[] emailArray = email.split("@");
         if(emailArray.length == 2){
-            String[] emailDot = emailArray[1].split(".");
+            String[] emailDot;
+            emailDot = emailArray[1].split("\\.");
             if(emailDot.length == 2)
             {
                 if(emailDot[1].length() == 3) { return true; }

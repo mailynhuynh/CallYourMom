@@ -12,12 +12,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ReminderCreator"></activity>
+        <activity
+            android:name=".Settings"
+            android:label="@string/title_activity_settings"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".ReminderCreator" />
         <activity
             android:name=".Chat"
             android:label="@string/title_activity_chat"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Profile" />
+        <activity android:name=".Friend_Profile" />
         <activity android:name=".MainMenu" />
         <activity android:name=".Friends" />
         <activity android:name=".Login">

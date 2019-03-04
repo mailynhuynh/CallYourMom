@@ -5,13 +5,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class Profile extends AppCompatActivity {
+public class Friend_Profile extends AppCompatActivity {
     Button b1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile);
+        setContentView(R.layout.activity_Friend_profile);
         b1 = (Button) findViewById(R.id.Back);
 
         b1.setOnClickListener(new View.OnClickListener(){

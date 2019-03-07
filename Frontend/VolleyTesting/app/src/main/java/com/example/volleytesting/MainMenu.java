@@ -53,7 +53,7 @@ public class MainMenu extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //TODO create profile page.
-                Intent profile = new Intent(getApplicationContext(), Profile.class);
+                Intent profile = new Intent(getApplicationContext(), Friend_Profile.class);
                 startActivity(profile);
             }
         });

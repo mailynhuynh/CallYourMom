@@ -1,6 +1,5 @@
 package com.example.volleytesting;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -54,7 +53,7 @@ public class MainMenu extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //TODO create profile page.
-                Intent profile = new Intent(getApplicationContext(), Profile.class);
+                Intent profile = new Intent(getApplicationContext(), User_Profile.class);
                 startActivity(profile);
             }
         });

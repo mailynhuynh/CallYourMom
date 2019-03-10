@@ -15,8 +15,7 @@
         <activity
             android:name=".Chat"
             android:label="@string/title_activity_chat"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".ReminderCreator" />
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Friend_Profile" />
         <activity android:name=".MainMenu" />
         <activity android:name=".Friends" />

@@ -18,12 +18,11 @@ public class EventService {
 		return eventRepository.findAll();
 	}
 
-	public Event get(Long id) {
+	public Event get(Integer id) {
 		return eventRepository.getOne(id);
 	}
 
 	public Event create(Event event) {
 		return eventRepository.save(event);
 	}
-
 }

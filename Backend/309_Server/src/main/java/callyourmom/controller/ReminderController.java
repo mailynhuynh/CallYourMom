@@ -4,10 +4,10 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.bind.annotation.RestController;
 
 import callyourmom.service.ReminderService;
 import callyourmom.user.Reminder;
+import callyourmom.user.User;
 
 @RestController
 public class ReminderController {
@@ -23,4 +23,10 @@ public class ReminderController {
 	Reminder get(@PathVariable Integer id) {
 	    return reminderService.get(id);
 	}
+	
+	@PostMapping("/reminders")
+	Reminder post(@RequestBody Reminder reminder) {
+	    return reminderService.create(reminder);
+	}
+	
 }

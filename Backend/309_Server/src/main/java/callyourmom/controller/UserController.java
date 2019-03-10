@@ -27,4 +27,20 @@ public class UserController {
 	User post(@RequestBody User user) {
 	    return userService.create(user);
 	}
+	
+	@GetMapping("/users/{id}")
+	List<User> getFriends(@PathVariable Integer id){
+		return userService.getFriends(id);
+	
+	}
+	
+	@PostMapping("/users")
+	void addFriend(@RequestBody Integer id) {
+		userService.addFriend(id);
+	}
+	
+	
+	
+	
+	
 }

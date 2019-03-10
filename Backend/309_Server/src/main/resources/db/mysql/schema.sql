@@ -6,8 +6,7 @@ CREATE TABLE IF NOT EXISTS CallYourMomUsers (
   password VARCHAR(20) NOT NULL,
   address VARCHAR(255),
   telephone VARCHAR(20),
-  friends VARCHAR(20)
-
+  friends VARCHAR(20),
   INDEX(last_name)
 ) engine=InnoDB;
 

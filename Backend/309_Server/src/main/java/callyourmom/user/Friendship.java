@@ -42,7 +42,7 @@ public class Friendship {
 		return friendId;
 	}
 	
-	public void setFriendId(Integer friendID) {
+	public void setFriendId(Integer friendId) {
 		this.friendId = friendId;
 	}
 	

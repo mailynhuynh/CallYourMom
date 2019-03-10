@@ -55,11 +55,4 @@ public class UserService {
 		User newFriend = userRepository.getOne(id);
 		newFriend.setFriend(id);		
 	}
-	
-	
-	
-	
-	
-	
-
 }

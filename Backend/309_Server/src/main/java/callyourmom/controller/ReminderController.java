@@ -19,7 +19,7 @@ public class ReminderController {
 	    return reminderService.getAll();
 	}
 	
-	@GetMapping("/events/{id}")
+	@GetMapping("//{id}")
 	Event get(@PathVariable Integer id) {
 	    return reminderService.get(id);
 	}

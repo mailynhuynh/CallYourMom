@@ -41,6 +41,8 @@ public class Friends extends AppCompatActivity {
         //Back button
         back = findViewById(R.id.backb);
 
+        message_button = findViewById(R.id.message_button);
+
         MessageButtonInit();//Initializes the message button
 
         back.setOnClickListener(new View.OnClickListener() {

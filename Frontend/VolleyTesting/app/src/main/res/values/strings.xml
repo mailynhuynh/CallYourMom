@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">VolleyTesting</string>
     <string name="Back">Back</string>
+    <string name="BackButton">BackButton</string>
+    <string name="UserImage">UserImage</string>
+    <string name="MessageButton">MessageButton</string>
     <string name="PROFILE">PROFILE</string>
     <string name="Invite">Invite</string>
     <string name="TagIn">Tag In</string>

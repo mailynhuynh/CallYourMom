@@ -1,5 +1,6 @@
 package com.example.volleytesting;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -38,7 +39,8 @@ public class Chat extends AppCompatActivity {
         friend_profile.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                Toast.makeText(getApplication(), "BackButton", Toast.LENGTH_LONG).show();
+                Intent i = new Intent(Chat.this, Friend_Profile.class);
+                startActivity(i);
 
             }
         });
@@ -47,7 +49,7 @@ public class Chat extends AppCompatActivity {
         message_button.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                Toast.makeText(getApplication(), "BackButton", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplication(), "Message Button", Toast.LENGTH_LONG).show();
 
             }
         });

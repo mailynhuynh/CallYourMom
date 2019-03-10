@@ -5,24 +5,24 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import callyourmom.repository.EventRepository;
-import callyourmom.user.Event;
+import callyourmom.repository.ReminderRepository;
+import callyourmom.user.Reminder;
 
 @Service
 public class ReminderService {
 	
 	@Autowired
-	EventRepository reminderRepository;
+	ReminderRepository reminderRepository;
 
-	public List<Event> getAll() {
+	public List<Reminder> getAll() {
 		return reminderRepository.findAll();
 	}
 
-	public Event get(Integer id) {
+	public Reminder get(Integer id) {
 		return reminderRepository.getOne(id);
 	}
 
-	public Event create(Event event) {
-		return reminderRepository.save(event);
+	public Reminder create(Reminder reminder) {
+		return reminderRepository.save(reminder);
 	}
 }

@@ -29,6 +29,7 @@ public class Friends extends AppCompatActivity {
 
     Button back;
     Button getFriends;
+    Button message_button;//button to get to chat page
     TextView friends;
 
     @Override
@@ -39,6 +40,8 @@ public class Friends extends AppCompatActivity {
         friends = findViewById(R.id.friends);
         //Back button
         back = findViewById(R.id.backb);
+
+        MessageButtonInit();//Initializes the message button
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,6 +60,17 @@ public class Friends extends AppCompatActivity {
         });
 
 
+    }
+
+    private void MessageButtonInit() {
+        message_button.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                Intent i = new Intent(Friends.this, Chat.class);
+                startActivity(i);
+
+            }
+        });
     }
 
     /**

@@ -28,4 +28,13 @@ public class FriendshipController {
 	Friendship post(@RequestBody Friendship f) {
 	    return FriendshipService.create(f);
 	}
+	
+	@GetMapping("/friendship/friend/{id}")
+	User getFriend(@PathVariable Integer id) {
+	    return FriendshipService.getFriend(id);
+	}
+	
+	
+	
+	
 }

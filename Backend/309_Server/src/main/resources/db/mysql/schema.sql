@@ -1,3 +1,5 @@
+USE CAllYourMom;
+
 CREATE TABLE IF NOT EXISTS Users (
   id INTEGER(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   firstName VARCHAR(30) NOT NULL,
@@ -6,9 +8,14 @@ CREATE TABLE IF NOT EXISTS Users (
   password VARCHAR(20) NOT NULL,
   address VARCHAR(255),
   telephone VARCHAR(20),
-  friends VARCHAR(20),
-  INDEX(last_name)
 ) engine=InnoDB;
+
+
+CREATE TABLE IF NOT EXISTS Friendship (
+id INTEGER(11) NOT NULL,
+friendId INTEGER(11) NOT NULL
+)
+
 
 
 CREATE TABLE IF NOT EXISTS Events(

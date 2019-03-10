@@ -48,15 +48,6 @@ public class User {
     private String telephone;
     
     
-    // EDIT: Mar 10
-    @Column(name = "friends")
-    @NotFound(action = NotFoundAction.IGNORE)
-    private ArrayList<Integer> friends;
-    
-    
-    
-    
-    
     
 	public Integer getId() {
 		return id;
@@ -114,20 +105,20 @@ public class User {
 		this.telephone = telephone;
 	}
 	
-	// Edit: Mar 10
-	public void setFriends(ArrayList<Integer> friends) {
-		this.friends = friends;
-	}
-	
-	// Edit: Mar 10
-	public void setFriend(Integer friend) {
-		friends.add(friend);
-	}
-	
-	// Edit: Mat 10
-	public ArrayList<Integer> getFriends(){
-		return friends;
-	}	
+//	// Edit: Mar 10
+//	public void setFriends(ArrayList<Integer> friends) {
+//		this.friends = friends;
+//	}
+//	
+//	// Edit: Mar 10
+//	public void setFriend(Integer friend) {
+//		friends.add(friend);
+//	}
+//	
+//	// Edit: Mat 10
+//	public ArrayList<Integer> getFriends(){
+//		return friends;
+//	}	
 	
 	
 	
@@ -137,6 +128,6 @@ public class User {
 	public String toString() {
 		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", userName=" + userName
 				+ ", password=" + password + ", address=" + address + ", telephone=" + telephone + 
-				"Friends: " + friends.toString() +  "]";
+			 "]";
 	}
 }

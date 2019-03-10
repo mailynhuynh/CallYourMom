@@ -71,4 +71,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.974" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="MessageButton"
+        app:srcCompat="@android:drawable/sym_action_email"
+        tools:layout_editor_absoluteX="218dp"
+        tools:layout_editor_absoluteY="355dp" />
+
 </android.support.constraint.ConstraintLayout>

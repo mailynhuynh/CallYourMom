@@ -18,6 +18,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Friend_Profile" />
         <activity android:name=".MainMenu" />
+        <activity android:name=".ReminderCreator"/>
         <activity android:name=".Friends" />
         <activity android:name=".Login">
             <intent-filter>

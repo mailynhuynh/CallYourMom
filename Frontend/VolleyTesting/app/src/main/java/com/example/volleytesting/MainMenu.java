@@ -74,7 +74,8 @@ public class MainMenu extends AppCompatActivity {
         reminders.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO
+                Intent reminder = new Intent(getApplicationContext(), ReminderCreator.class);
+                startActivity(reminder);
             }
         });
     }

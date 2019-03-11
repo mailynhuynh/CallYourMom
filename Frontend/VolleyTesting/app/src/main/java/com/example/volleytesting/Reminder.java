@@ -2,6 +2,9 @@ package com.example.volleytesting;
 
 import java.util.Calendar;
 
+/**
+ * Reminder class.
+ */
 public class Reminder {
     /**
      * Title of reminder
@@ -10,7 +13,7 @@ public class Reminder {
     /**
      * Description of reminder
      */
-    private String description;
+    private String location;
     /**
      * Minute to set reminder to
      */
@@ -41,12 +44,16 @@ public class Reminder {
         hour = Calendar.HOUR;
         minute = Calendar.MINUTE;
     }
+
+    /**
+     * Setter methods
+     */
     public void setTitle(String title){
         this.title = title;
     }
 
-    public void setDescription(String description){
-        this.description = description;
+    public void setLocation(String location){
+        this.location = location;
     }
 
     public void setDay(int day){
@@ -72,31 +79,17 @@ public class Reminder {
     /**
      *  Getter methods.
      */
-    public String getDescription() {
-        return description;
-    }
+    public String getLocation() { return location; }
 
-    public String getTitle() {
-        return title;
-    }
+    public String getTitle() { return title; }
 
-    public int getDay() {
-        return day;
-    }
+    public int getDay() { return day; }
 
-    public int getHour() {
-        return hour;
-    }
+    public int getHour() { return hour; }
 
-    public int getMinute() {
-        return minute;
-    }
+    public int getMinute() { return minute; }
 
-    public int getMonth() {
-        return month;
-    }
+    public int getMonth() { return month; }
 
-    public int getYear() {
-        return year;
-    }
+    public int getYear() { return year; }
 }

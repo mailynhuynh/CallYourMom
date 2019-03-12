@@ -15,11 +15,11 @@ public class Reminder {
      */
     private String location;
     /**
-     * Minute to set reminder to
+     * Minute to set reminder to (0-59)
      */
     private int minute;
     /**
-     * Hour to set reminder to
+     * Hour to set reminder to (0-24)
      */
     private int hour;
     /**

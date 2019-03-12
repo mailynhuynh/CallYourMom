@@ -2,10 +2,12 @@ package com.example.volleytesting;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.util.Calendar;
 
@@ -23,10 +25,50 @@ public class ReminderCreator extends AppCompatActivity {
         setContentView(R.layout.activity_reminder_creator);
 
         initFields();
+        createPress();
 
 
 
 
+    }
+    private void createPress()
+    {
+        create.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!valiDATE("/") && !valiDATE("-")){
+                    easyToast("Please enter a valid date");
+                    date.setText("");
+                    return;
+                }
+                String enteredDate = date.getText().toString();
+                if(!validateTime()) {
+                    easyToast("Please enter a valid time.");
+                    time.setText("");
+                    return;
+                }
+                String enteredTime = time.getText().toString();
+
+                String enteredTitle = title.getText().toString();
+                String enteredLocation = location.getText().toString();
+                String enteredAMorPM = amOrPm.getSelectedItem().toString();
+
+            }
+        });
+    }
+    private void createReminder(String date, String time, String amOrPm, String title, String location)
+    {
+       //TODO
+    }
+
+    /**
+     * Custom and faster call to makeToast.
+     *
+     * @param s
+     *      Message to be displayed in toast.
+     */
+    private void easyToast(String s){
+        Toast.makeText(getApplicationContext(), s, Toast.LENGTH_LONG).show();
     }
 
     /**
@@ -62,7 +104,7 @@ public class ReminderCreator extends AppCompatActivity {
      *      true if date is valid, false otherwise.
      */
     private boolean valiDATE(String regex) {
-        String timeEntered = time.getText().toString();
+        String timeEntered = date.getText().toString();
         String[] strArray = timeEntered.split(regex);
         if(strArray.length == 3)
         {
@@ -83,8 +125,41 @@ public class ReminderCreator extends AppCompatActivity {
 
 
         }
+        else { return false; }
         return true;
     }
+
+    /**
+     * Method to validate the time being passed in.
+     *
+     * Time is valid if hour is within range [1-12] inclusive and minute is within the range [0, 59]
+     * inclusive.
+     *
+     * @return
+     *      True if time is valid, false otherwise.
+     *
+     */
+    private boolean validateTime() {
+        String[] strArr = time.getText().toString().split(":");
+        if( strArr.length == 2 ) {
+            int hour, minute;
+
+            try{
+                hour = Integer.parseInt(strArr[0]);
+                minute = Integer.parseInt(strArr[1]);
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+            if((hour > 12 || hour < 1) || (minute > 59 || minute < 0 )) { return false; }
+        }
+        else { return false; }
+
+        return true;
+
+    }
+
 
     /**
      * Validates that the day is valid given the month and year.

@@ -27,32 +27,32 @@ public class UserService {
 		return userRepository.save(user);
 	}
 	
-	/**
-	 * Edit: Mar 10
-	 * The method to get all friends of a user
-	 * @param id
-	 * @return
-	 */
-	public List<User> getFriends(Integer id){
-		
-		User u = userRepository.getOne(id);
-		ArrayList<Integer> friends = u.getFriends();
-		
-		List<User> result = new ArrayList<User>();
-		for (int i : friends) {
-			result.add(userRepository.getOne(i));
-		}
-		return result;
-	}
-	
-	
-	/**
-	 * Edit: Mar 10
-	 * add a new friend to an user
-	 * @param id
-	 */
-	public void addFriend(Integer id){
-		User newFriend = userRepository.getOne(id);
-		newFriend.setFriend(id);		
-	}
+//	/**
+//	 * Edit: Mar 10
+//	 * The method to get all friends of a user
+//	 * @param id
+//	 * @return
+//	 */
+//	public List<User> getFriends(Integer id){
+//		
+//		User u = userRepository.getOne(id);
+//		ArrayList<Integer> friends = u.getFriends();
+//		
+//		List<User> result = new ArrayList<User>();
+//		for (int i : friends) {
+//			result.add(userRepository.getOne(i));
+//		}
+//		return result;
+//	}
+//	
+//	
+//	/**
+//	 * Edit: Mar 10
+//	 * add a new friend to an user
+//	 * @param id
+//	 */
+//	public void addFriend(Integer id){
+//		User newFriend = userRepository.getOne(id);
+//		newFriend.setFriend(id);		
+//	}
 }

@@ -1,10 +1,10 @@
 package callyourmom.repository;
 
-import callyourmom.user.Reminder;
+import callyourmom.user.*;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ReminderRepository extends JpaRepository<Reminder, Integer> {
+public interface FriendshipRepository extends JpaRepository<Friendship, Integer> {
 }  

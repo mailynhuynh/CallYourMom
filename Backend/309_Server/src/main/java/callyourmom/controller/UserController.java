@@ -28,16 +28,20 @@ public class UserController {
 	    return userService.create(user);
 	}
 	
-	@GetMapping("/users/friends/{id}")
-	List<User> getFriends(@PathVariable Integer id){
-		return userService.getFriends(id);
 	
-	}
 	
-	@PostMapping("/users/friend")
-	void addFriend(@RequestBody Integer id) {
-		userService.addFriend(id);
-	}
+	
+	
+//	@GetMapping("/users/friends/{id}")
+//	List<User> getFriends(@PathVariable Integer id){
+//		return userService.getFriends(id);
+//	
+//	}
+//	
+//	@PostMapping("/users/friend")
+//	void addFriend(@RequestBody Integer id) {
+//		userService.addFriend(id);
+//	}
 	
 	
 	

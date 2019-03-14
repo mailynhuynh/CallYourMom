@@ -73,8 +73,8 @@ public class ReminderCreator extends AppCompatActivity {
         int[] timeInts = stringParseInt(time,":");
 
         reminder = new Reminder();
-        reminder.setDay(dateInts[0]);
-        reminder.setMonth(dateInts[1]);
+        reminder.setMonth(dateInts[0]);
+        reminder.setDay(dateInts[1]);
         reminder.setYear(dateInts[2]);
 
         reminder.setHour(hourTo24(timeInts[0]));

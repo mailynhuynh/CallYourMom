@@ -1,6 +1,8 @@
 package reminderUtil;
 
 import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
@@ -128,13 +130,9 @@ public class Reminder {
      */
     public long reminderTimeInMillis()
     {
-        Calendar c = Calendar.getInstance();
-        int year = getYear();
-        c.set(Calendar.HOUR_OF_DAY, getHour());
-        c.set(Calendar.MINUTE, getMinute());
-        c.set(Calendar.DAY_OF_MONTH, getDay());
-        c.set(Calendar.MONTH, getMonth());
-        c.set(Calendar.YEAR, getYear());
+        Calendar c = new GregorianCalendar(getYear(), getMonth(), getDay(), getHour(), getMinute(), 0);
+        c.getTime();
+
 
         //TODO fix time bug.
         long timeInMillis = c.getTimeInMillis();

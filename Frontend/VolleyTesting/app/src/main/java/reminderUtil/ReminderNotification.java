@@ -1,5 +1,6 @@
 package reminderUtil;
 
+import android.annotation.TargetApi;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Context;
@@ -16,8 +17,11 @@ public class ReminderNotification extends ContextWrapper {
     private NotificationManager reminderNotifManager;
 
 
+    @TargetApi(Build.VERSION_CODES.O)
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public ReminderNotification(Context base) {
         super(base);
+        createChannel();
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -25,6 +29,8 @@ public class ReminderNotification extends ContextWrapper {
     {
         NotificationChannel channel = new NotificationChannel(channelID, channelName,
                 NotificationManager.IMPORTANCE_HIGH);
+
+        getManager().createNotificationChannel(channel);
     }
 
     /**

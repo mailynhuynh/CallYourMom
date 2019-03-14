@@ -1,6 +1,14 @@
-package com.example.volleytesting;
+package reminderUtil;
 
 import java.util.Calendar;
+
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
+
 
 /**
  * Reminder class.
@@ -43,6 +51,24 @@ public class Reminder {
         day = Calendar.DAY_OF_MONTH;
         hour = Calendar.HOUR;
         minute = Calendar.MINUTE;
+    }
+
+    /**
+     * Starts reminder as notification.
+     *
+     * @param context
+     *      Context to use. (Will be ReminderCreator)
+     */
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    public void setReminder(Context context){
+        AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+        Intent intent = new Intent(context, ReminderBroadcastReceiver.class);
+
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 1, intent, 0);
+
+        alarmManager.setExact(AlarmManager.RTC_WAKEUP, reminderTimeInMillis(), pendingIntent);
+
+
     }
 
     /**
@@ -92,4 +118,22 @@ public class Reminder {
     public int getMonth() { return month; }
 
     public int getYear() { return year; }
+
+    /**
+     * Returns the date in miliseconds. Needed for creating reminder alert.
+     * @return
+     */
+    public long reminderTimeInMillis()
+    {
+        Calendar c = Calendar.getInstance();
+        c.set(Calendar.HOUR_OF_DAY, getHour());
+        c.set(Calendar.MINUTE, getMinute());
+        c.set(Calendar.DAY_OF_MONTH, getDay());
+        c.set(Calendar.MONTH, getMonth());
+        c.set(Calendar.YEAR, getYear());
+
+        return c.getTimeInMillis();
+
+    }
+
 }

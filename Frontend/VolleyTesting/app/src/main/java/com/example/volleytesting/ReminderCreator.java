@@ -11,7 +11,11 @@ import android.widget.Toast;
 
 import java.util.Calendar;
 
+import reminderUtil.Reminder;
+
 public class ReminderCreator extends AppCompatActivity {
+
+    private Reminder reminder;
 
     private static String[] SPINNER_LIST = {"AM","PM"};
 
@@ -58,7 +62,35 @@ public class ReminderCreator extends AppCompatActivity {
     }
     private void createReminder(String date, String time, String amOrPm, String title, String location)
     {
-       //TODO
+        
+
+    }
+
+    /**
+     * Converts provided hour in 12-hour time to 24-hour time
+     *
+     * @param hour
+     *      Hour to convert
+     * @return
+     *      Hour in 24-hour mode.
+     */
+    private int hourTo24(int hour)
+    {
+        if(amOrPm.equals("AM"))
+        {
+            if(hour == 12){
+                return 0;
+            }
+            else { return hour; }
+        }
+        else if (amOrPm.equals("PM"))
+        {
+            if(hour == 12) { return hour; }
+            else{
+                return 12 + hour;
+            }
+        }
+        return hour;
     }
 
     /**

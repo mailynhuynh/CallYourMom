@@ -8,6 +8,8 @@ import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.NotificationCompat;
 
+import reminderUtil.Reminder;
+
 public class ReminderNotification extends ContextWrapper {
     private final String channelID = "reminderID";
     private final  String channelName = "ReminderChannel";
@@ -41,20 +43,17 @@ public class ReminderNotification extends ContextWrapper {
     }
 
     /**
-     * Returns the NotificationCompat.Builder
      *
-     * @param reminder
-     *      Reminder to use.
-     *
+     * @param title
+     * @param location
      * @return
-     *      NotificationCompat.Builder we need.
      */
-    public NotificationCompat.Builder getChannelNotification(Reminder reminder)
+    public NotificationCompat.Builder getChannelNotification(String title, String location)
     {
         NotificationCompat.Builder notificationCB = new
                 NotificationCompat.Builder(getApplicationContext(), channelID);
-        notificationCB.setContentTitle(reminder.getTitle());
-        notificationCB.setContentText(reminder.getLocation());
+        notificationCB.setContentTitle(title);
+        notificationCB.setContentText(location);
         //TODO add more details to reminders.
 
         return notificationCB;

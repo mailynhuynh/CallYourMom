@@ -1,5 +1,8 @@
 package com.example.volleytesting;
 
+import android.annotation.TargetApi;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -38,9 +41,11 @@ public class ReminderCreator extends AppCompatActivity {
     private void createPress()
     {
         create.setOnClickListener(new View.OnClickListener() {
+            @TargetApi(Build.VERSION_CODES.KITKAT)
+            @RequiresApi(api = Build.VERSION_CODES.KITKAT)
             @Override
             public void onClick(View v) {
-                if(!valiDATE("/") && !valiDATE("-")){
+                if(!valiDATE("/")){
                     easyToast("Please enter a valid date");
                     date.setText("");
                     return;
@@ -55,14 +60,59 @@ public class ReminderCreator extends AppCompatActivity {
 
                 String enteredTitle = title.getText().toString();
                 String enteredLocation = location.getText().toString();
-                String enteredAMorPM = amOrPm.getSelectedItem().toString();
+
+                createReminder(enteredDate, enteredTime, enteredTitle, enteredLocation);
 
             }
         });
     }
-    private void createReminder(String date, String time, String amOrPm, String title, String location)
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    private void createReminder(String date, String time, String title, String location)
     {
-        
+        int[] dateInts = stringParseInt(date, "/");
+        int[] timeInts = stringParseInt(time,":");
+
+        reminder = new Reminder();
+        reminder.setDay(dateInts[0]);
+        reminder.setMonth(dateInts[1]);
+        reminder.setYear(dateInts[2]);
+
+        reminder.setHour(hourTo24(timeInts[0]));
+        reminder.setMinute(timeInts[1]);
+
+        reminder.setTitle(title);
+        reminder.setLocation(location);
+
+        reminder.setReminder(this);
+        easyToast("Alarm created");
+
+    }
+
+    /**
+     * Helper method to parse a string into an array of ints based off of a regex.
+     *
+     * @param s
+     *      String to use
+     * @param regex
+     *      Regex to use
+     * @return
+     *      Integer array.
+     */
+    private int[] stringParseInt(String s, String regex)
+    {
+        String[] sArr = s.split(regex);
+        int[] intArray = new int[sArr.length];
+        for(int i = 0; i < sArr.length; i++)
+        {
+            try {
+                intArray[i] = Integer.parseInt(sArr[i]);
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+        }
+        return intArray;
 
     }
 
@@ -76,14 +126,15 @@ public class ReminderCreator extends AppCompatActivity {
      */
     private int hourTo24(int hour)
     {
-        if(amOrPm.equals("AM"))
+        String amPm = amOrPm.getSelectedItem().toString();
+        if(amPm.equals("AM"))
         {
             if(hour == 12){
                 return 0;
             }
             else { return hour; }
         }
-        else if (amOrPm.equals("PM"))
+        else if (amPm.equals("PM"))
         {
             if(hour == 12) { return hour; }
             else{

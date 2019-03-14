@@ -22,7 +22,7 @@ import org.json.JSONObject;
 import app.AppController;
 
 /**
- * @author ZoeS
+ *
  * This class is currently for connectivity demonstration purposes only. WILL become friends list.
  */
 public class Friends extends AppCompatActivity {

@@ -63,6 +63,8 @@ public class Reminder {
     public void setReminder(Context context){
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         Intent intent = new Intent(context, ReminderBroadcastReceiver.class);
+        intent.putExtra(getTitle(),"title");
+        intent.putExtra(getLocation(), "location");
 
         PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 1, intent, 0);
 
@@ -70,6 +72,7 @@ public class Reminder {
 
 
     }
+    //TODO create cancel reminder method.
 
     /**
      * Setter methods
@@ -126,13 +129,16 @@ public class Reminder {
     public long reminderTimeInMillis()
     {
         Calendar c = Calendar.getInstance();
+        int year = getYear();
         c.set(Calendar.HOUR_OF_DAY, getHour());
         c.set(Calendar.MINUTE, getMinute());
         c.set(Calendar.DAY_OF_MONTH, getDay());
         c.set(Calendar.MONTH, getMonth());
         c.set(Calendar.YEAR, getYear());
 
-        return c.getTimeInMillis();
+        //TODO fix time bug.
+        long timeInMillis = c.getTimeInMillis();
+        return timeInMillis;
 
     }
 

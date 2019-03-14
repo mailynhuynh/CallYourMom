@@ -20,7 +20,7 @@ public class EventController {
 	}
 	
 	@GetMapping("/events/{id}")
-	Event get(@PathVariable Long id) {
+	Event get(@PathVariable Integer id) {
 	    return eventService.get(id);
 	}
 

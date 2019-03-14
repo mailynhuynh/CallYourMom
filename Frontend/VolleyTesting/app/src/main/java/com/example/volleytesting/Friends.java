@@ -30,6 +30,7 @@ public class Friends extends AppCompatActivity {
 
     Button back;
     Button getFriends;
+    Button message_button;//button to get to chat page
     TextView friends;
     ImageButton messageButton;
 
@@ -42,7 +43,9 @@ public class Friends extends AppCompatActivity {
         //Back button
         back = findViewById(R.id.backb);
 
-        messageButton = findViewById(R.id.message_button);
+        message_button = findViewById(R.id.message_button);
+
+        MessageButtonInit();//Initializes the message button
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,7 +76,6 @@ public class Friends extends AppCompatActivity {
             }
         });
     }
-
 
     /**
      * Parses User JSON objects sent from Server.

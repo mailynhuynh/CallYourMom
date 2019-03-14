@@ -1,6 +1,8 @@
 
 package callyourmom.user;
 
+import java.util.ArrayList;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -44,6 +46,8 @@ public class User {
     @Column(name = "telephone")
     @NotFound(action = NotFoundAction.IGNORE)
     private String telephone;
+    
+    
     
 	public Integer getId() {
 		return id;
@@ -100,10 +104,30 @@ public class User {
 	public void setTelephone(String telephone) {
 		this.telephone = telephone;
 	}
-
+	
+//	// Edit: Mar 10
+//	public void setFriends(ArrayList<Integer> friends) {
+//		this.friends = friends;
+//	}
+//	
+//	// Edit: Mar 10
+//	public void setFriend(Integer friend) {
+//		friends.add(friend);
+//	}
+//	
+//	// Edit: Mat 10
+//	public ArrayList<Integer> getFriends(){
+//		return friends;
+//	}	
+	
+	
+	
+	
+	// Edit: Mar 10
     @Override
 	public String toString() {
 		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", userName=" + userName
-				+ ", password=" + password + ", address=" + address + ", telephone=" + telephone + "]";
+				+ ", password=" + password + ", address=" + address + ", telephone=" + telephone + 
+			 "]";
 	}
 }

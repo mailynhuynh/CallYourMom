@@ -29,9 +29,9 @@ public class Chat extends AppCompatActivity {
     private void BackButtonInit() {
         back_button.setOnClickListener(new View.OnClickListener(){
             @Override
-            public void onClick(View view){
-                Toast.makeText(getApplication(), "BackButton", Toast.LENGTH_LONG).show();
-
+            public void onClick(View view) {
+                Intent j = new Intent(Chat.this, Friends.class);
+                startActivity(j);
             }
         });
     }
@@ -49,17 +49,12 @@ public class Chat extends AppCompatActivity {
         message_button.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                Toast.makeText(getApplication(), "BackButton", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplication(), "Message Button", Toast.LENGTH_LONG).show();
 
             }
         });
     }
 
-
-
-
-
-
-    }
+}
 
 

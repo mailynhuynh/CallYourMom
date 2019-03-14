@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.android.volley.Request;
@@ -31,6 +32,7 @@ public class Friends extends AppCompatActivity {
     Button getFriends;
     Button message_button;//button to get to chat page
     TextView friends;
+    ImageButton messageButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,13 +66,13 @@ public class Friends extends AppCompatActivity {
 
     }
 
-    private void MessageButtonInit() {
-        message_button.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view){
-                Intent i = new Intent(Friends.this, Chat.class);
-                startActivity(i);
 
+    private void MessageButtonInit() {
+        messageButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Intent j = new Intent(Friends.this, Chat.class);
+                startActivity(j);
             }
         });
     }

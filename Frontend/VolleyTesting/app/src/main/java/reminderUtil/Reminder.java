@@ -1,8 +1,11 @@
 package reminderUtil;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.TimeZone;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
@@ -68,8 +71,8 @@ public class Reminder {
         intent.putExtra(getTitle(),"title");
         intent.putExtra(getLocation(), "location");
 
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 1, intent, 0);
 
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 1, intent, 0);
         alarmManager.setExact(AlarmManager.RTC_WAKEUP, reminderTimeInMillis(), pendingIntent);
 
 
@@ -124,19 +127,24 @@ public class Reminder {
 
     public int getYear() { return year; }
 
+
     /**
      * Returns the date in miliseconds. Needed for creating reminder alert.
      * @return
      */
     public long reminderTimeInMillis()
     {
-        Calendar c = new GregorianCalendar(getYear(), getMonth(), getDay(), getHour(), getMinute(), 0);
-        c.getTime();
-
-
-        //TODO fix time bug.
-        long timeInMillis = c.getTimeInMillis();
-        return timeInMillis;
+        String dateStr = getYear()+"/"+getMonth()+"/"+getDay()+
+                " "+getHour()+":"+getMinute()+":00";
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        Date date = null;
+        try {
+            date = sdf.parse(dateStr);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        long millis = date.getTime();
+        return millis;
 
     }
 

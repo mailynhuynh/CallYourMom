@@ -60,14 +60,15 @@ public class ReminderCreator extends AppCompatActivity {
 
                 String enteredTitle = title.getText().toString();
                 String enteredLocation = location.getText().toString();
+                boolean isAM = amOrPm.getSelectedItem().toString().equals("AM");
 
-                createReminder(enteredDate, enteredTime, enteredTitle, enteredLocation);
+                createReminder(enteredDate, enteredTime, enteredTitle, enteredLocation, isAM);
 
             }
         });
     }
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    private void createReminder(String date, String time, String title, String location)
+    private void createReminder(String date, String time, String title, String location, boolean isAM)
     {
         int[] dateInts = stringParseInt(date, "/");
         int[] timeInts = stringParseInt(time,":");
@@ -76,8 +77,9 @@ public class ReminderCreator extends AppCompatActivity {
         reminder.setMonth(dateInts[0]);
         reminder.setDay(dateInts[1]);
         reminder.setYear(dateInts[2]);
+        int theHour = hourTo24(timeInts[0], isAM);
 
-        reminder.setHour(hourTo24(timeInts[0]));
+        reminder.setHour(theHour);
         reminder.setMinute(timeInts[1]);
 
         reminder.setTitle(title);
@@ -87,7 +89,16 @@ public class ReminderCreator extends AppCompatActivity {
         easyToast("Alarm created");
 
     }
+    private int hourTo24(int hour, boolean isAM){
+        if(hour == 12 && isAM) {
+            return 0;
+        }
+        if(!isAM) {
+            return hour + 12;
+        }
+        return hour;
 
+    }
     /**
      * Helper method to parse a string into an array of ints based off of a regex.
      *
@@ -114,34 +125,6 @@ public class ReminderCreator extends AppCompatActivity {
         }
         return intArray;
 
-    }
-
-    /**
-     * Converts provided hour in 12-hour time to 24-hour time
-     *
-     * @param hour
-     *      Hour to convert
-     * @return
-     *      Hour in 24-hour mode.
-     */
-    private int hourTo24(int hour)
-    {
-        String amPm = amOrPm.getSelectedItem().toString();
-        if(amPm.equals("AM"))
-        {
-            if(hour == 12){
-                return 0;
-            }
-            else { return hour; }
-        }
-        else if (amPm.equals("PM"))
-        {
-            if(hour == 12) { return hour; }
-            else{
-                return 12 + hour;
-            }
-        }
-        return hour;
     }
 
     /**

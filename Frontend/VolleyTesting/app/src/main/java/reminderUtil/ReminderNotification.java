@@ -9,6 +9,8 @@ import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.NotificationCompat;
 
+import com.example.volleytesting.R;
+
 import reminderUtil.Reminder;
 
 public class ReminderNotification extends ContextWrapper {
@@ -60,6 +62,7 @@ public class ReminderNotification extends ContextWrapper {
                 NotificationCompat.Builder(getApplicationContext(), channelID);
         notificationCB.setContentTitle(title);
         notificationCB.setContentText(location);
+        notificationCB.setSmallIcon(R.drawable.ic_notifications_black_24dp);
         //TODO add more details to reminders.
 
         return notificationCB;

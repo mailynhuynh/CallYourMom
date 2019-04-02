@@ -89,11 +89,19 @@ public class ReminderCreator extends AppCompatActivity {
         easyToast("Alarm created");
 
     }
+
+    /**
+     * Converts from 12-hour time to 24 hour
+     *
+     * @param hour
+     * @param isAM
+     * @return
+     */
     private int hourTo24(int hour, boolean isAM){
         if(hour == 12 && isAM) {
             return 0;
         }
-        if(!isAM) {
+        if(!isAM && hour != 12) {
             return hour + 12;
         }
         return hour;

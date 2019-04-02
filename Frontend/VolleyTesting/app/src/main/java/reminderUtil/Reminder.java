@@ -67,12 +67,16 @@ public class Reminder {
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public void setReminder(Context context){
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-        Intent intent = new Intent(context, ReminderBroadcastReceiver.class);
+        ReminderBroadcastReceiver.title = this.getTitle();
+        ReminderBroadcastReceiver.location = this.getLocation();
+        Intent intent = new Intent(context, ReminderBroadcastReceiver.class)
+                .addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
         intent.putExtra(getTitle(),"title");
         intent.putExtra(getLocation(), "location");
 
 
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 1, intent, 0);
+
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 1, intent, PendingIntent.FLAG_UPDATE_CURRENT);
         alarmManager.setExact(AlarmManager.RTC_WAKEUP, reminderTimeInMillis(), pendingIntent);
 
 

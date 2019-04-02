@@ -7,6 +7,24 @@
     tools:context=".MainMenu">
 
     <Button
+        android:id="@+id/reminderList"
+        android:layout_width="110dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="Reminders"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Button
         android:id="@+id/friendsbutton"
         android:layout_width="98dp"
         android:layout_height="39dp"
@@ -99,19 +117,21 @@
 
     <Button
         android:id="@+id/reminders"
-        android:layout_width="98dp"
-        android:layout_height="39dp"
+        android:layout_width="84dp"
+        android:layout_height="62dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
-        android:text="Reminders"
+        android:text="Create Reminder"
+        android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.995"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.997" />
+        app:layout_constraintVertical_bias="0.013" />
 
 </android.support.constraint.ConstraintLayout>

@@ -71,8 +71,6 @@ public class Reminder {
         ReminderBroadcastReceiver.location = this.getLocation();
         Intent intent = new Intent(context, ReminderBroadcastReceiver.class)
                 .addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-        intent.putExtra(getTitle(),"title");
-        intent.putExtra(getLocation(), "location");
 
 
 

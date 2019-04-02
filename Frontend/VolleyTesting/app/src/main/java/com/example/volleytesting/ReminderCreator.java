@@ -45,7 +45,7 @@ public class ReminderCreator extends AppCompatActivity {
             @RequiresApi(api = Build.VERSION_CODES.KITKAT)
             @Override
             public void onClick(View v) {
-                if(!valiDATE("/")){
+                if(!validateDate("/")){
                     easyToast("Please enter a valid date");
                     date.setText("");
                     return;
@@ -95,7 +95,9 @@ public class ReminderCreator extends AppCompatActivity {
      *
      * @param hour
      * @param isAM
+     *
      * @return
+     *      Hour in 24hour form.
      */
     private int hourTo24(int hour, boolean isAM){
         if(hour == 12 && isAM) {
@@ -177,7 +179,7 @@ public class ReminderCreator extends AppCompatActivity {
      * @return
      *      true if date is valid, false otherwise.
      */
-    private boolean valiDATE(String regex) {
+    private boolean validateDate(String regex) {
         String timeEntered = date.getText().toString();
         String[] strArray = timeEntered.split(regex);
         if(strArray.length == 3)

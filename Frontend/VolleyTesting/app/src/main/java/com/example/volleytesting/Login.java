@@ -21,6 +21,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import app.AppController;
+import users.User;
 
 /**
  * @author ZoeS
@@ -92,7 +93,10 @@ public class Login extends AppCompatActivity {
 
                 final String userN = userName.getText().toString();
 
-                SendUser(username, lName, useremail, phoneNum, userN, userpassword);
+                User user = new User();
+                user.setUser(username, lName, userN, userpassword, useremail, phoneNum);
+
+                SendUser(user);
 
 
             }
@@ -122,32 +126,21 @@ public class Login extends AppCompatActivity {
     }
 
     /**
-     *
-     * @param name
-     *      First name of user
-     * @param lastName
-     *      Last name of user
-     * @param email
-     *      Email of user
-     * @param phoneNum
-     *      Phone number of user
-     * @param userName
-     *      Chosen username
-     * @param password
-     *      Chosen password (all digits)
+     * User to send
+     * @param user
      */
-    private void SendUser(String name, String lastName, String email, String
-            phoneNum, String userName, String password)
+    private void SendUser(User user)
     {
+
         //Map<String, String> params = new HashMap<>();
         JSONObject params = new JSONObject();
         try {
-            params.put("firstName", name);
-            params.put("lastName", lastName);
-            params.put("userName", userName);
-            params.put("password", password);
-            params.put("address", email);
-            params.put("telephone", phoneNum);
+            params.put("firstName", user.getFirstName());
+            params.put("lastName", user.getLastName());
+            params.put("userName", user.getUserName());
+            params.put("password", user.getPassword());
+            params.put("address", user.getEmail());
+            params.put("telephone", user.getPhoneNum());
 
         }
         catch (JSONException e) { e.printStackTrace(); }

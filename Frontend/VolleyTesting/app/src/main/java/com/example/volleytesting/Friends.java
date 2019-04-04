@@ -1,5 +1,6 @@
 package com.example.volleytesting;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -32,6 +33,7 @@ public class Friends extends AppCompatActivity {
     Button message_button;//button to get to chat page
     TextView friends;
 
+    @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

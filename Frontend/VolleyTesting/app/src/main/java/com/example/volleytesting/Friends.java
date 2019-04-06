@@ -58,8 +58,8 @@ public class Friends extends AppCompatActivity {
         messageButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                Intent ChatPage = new Intent(getApplicationContext(), Chat.class);
-                startActivity(ChatPage);
+                Intent chat = new Intent(getApplicationContext(), Chat.class);
+                startActivity(chat);
             }
         });
 

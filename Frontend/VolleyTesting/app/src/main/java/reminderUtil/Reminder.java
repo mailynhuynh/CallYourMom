@@ -2,9 +2,11 @@ package reminderUtil;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.List;
 import java.util.TimeZone;
 
 import android.app.AlarmManager;
@@ -14,11 +16,16 @@ import android.content.Intent;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 
+import users.Friend;
+import users.User;
+
 
 /**
  * Reminder class.
  */
 public class Reminder {
+    private User creator;
+    private List<Friend> tagged = new ArrayList<Friend>();
     /**
      * Title of reminder
      */
@@ -56,6 +63,36 @@ public class Reminder {
         day = Calendar.DAY_OF_MONTH;
         hour = Calendar.HOUR;
         minute = Calendar.MINUTE;
+    }
+    public void tag(Friend friend){
+        tagged.add(friend);
+    }
+    public boolean untag(Friend friend)
+    {
+        for(int i = 0; i < tagged.size(); i++)
+        {
+            if(friend.getID() == tagged.get(i).getID()){
+                tagged.remove(friend);
+                return true;
+            }
+
+        }
+        return false;
+    }
+    public String nameTaggedByID(int id)
+    {
+        for(int i = 0; i < tagged.size(); i++)
+        {
+            if(tagged.get(i).getID() == id) { return tagged.get(i).getName(); }
+        }
+        return null;
+    }
+    public List<String> getTaggedNames(){
+        ArrayList<String> list = new ArrayList<>();
+        for(Friend f : tagged){
+            list.add(f.getName());
+        }
+        return list;
     }
 
     /**

@@ -37,6 +37,7 @@ public class Login extends AppCompatActivity {
      * This was taken from
      * https://www.mytrendin.com/send-data-to-remote-server-in-android-using-volley-library/
      */
+    private User user;
     EditText name, email, password, lastName, phoneNumber, userName;
     Button save, displayFriends, login;
     String url = "http://cs309-bs-3.misc.iastate.edu:8080/users";
@@ -93,7 +94,7 @@ public class Login extends AppCompatActivity {
 
                 final String userN = userName.getText().toString();
 
-                User user = new User();
+                user = new User();
                 user.setUser(username, lName, userN, userpassword, useremail, phoneNum);
 
                 SendUser(user);

@@ -32,7 +32,7 @@ public class Chat extends AppCompatActivity {
         back_button.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                Intent j = new Intent(Chat.this, Friends.class);
+                Intent j = new Intent(getApplicationContext(), Friends.class);
                 startActivity(j);
             }
         });
@@ -41,7 +41,7 @@ public class Chat extends AppCompatActivity {
         friend_profile.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                Intent i = new Intent(Chat.this, Friend_Profile.class);
+                Intent i = new Intent(getApplicationContext(), Friend_Profile.class);
                 startActivity(i);
 
             }

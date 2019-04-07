@@ -1,11 +1,9 @@
 package users;
 
+import java.util.HashMap;
+import java.util.Hashtable;
+
 public class User {
-    /**
-     * Unique ID identifying user.
-     */
-    private static long staticUserId = 0;
-    private long userId;
     /**
      * First name of user
      */
@@ -30,16 +28,24 @@ public class User {
      * phone number of user
      */
     private String phoneNum;
-
+    /**
+     * Hashtable of friends
+     */
+    private Hashtable<Integer, Friend> friends;
     /**
      * Constructor for user object.
      */
     public User(){
-        staticUserId++;
-        userId = staticUserId;
 
     }
 
+    /**
+     * Adds a friend to the hashtable. Key is the friend's id.
+     * @param friend
+     */
+    public void addFriend(Friend friend){
+        friends.put(friend.getID(), friend);
+    }
     /**
      *Setter methods
      */
@@ -103,5 +109,4 @@ public class User {
         return password;
     }
 
-    public long getUserId() { return userId;}
 }

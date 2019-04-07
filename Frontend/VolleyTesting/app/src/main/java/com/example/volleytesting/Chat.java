@@ -36,13 +36,19 @@ public class Chat extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
+
         userName = getIntent().getExtras().getString("name");
-        uri += "/" + userName;
+        messageField = findViewById(R.id.messageTxt);
+        sent = findViewById(R.id.messagesSent);
+        received = findViewById(R.id.messagesReceived);
+
+
+        //uri += "/" + userName;
         Draft[] drafts = {new Draft_6455()};
 
         try {
             Log.d("Socket:", "Trying socket");
-            webSocket = new WebSocketClient(new URI(uri), (Draft) drafts[0]) {
+            webSocket = new WebSocketClient(new URI(uri), drafts[0]) {
                 @Override
                 public void onOpen(ServerHandshake serverHandshake) {
                     Log.d("OPEN", "run() returned: " + "is connecting");
@@ -73,6 +79,7 @@ public class Chat extends AppCompatActivity {
         sendButtonSetup();
 
 
+
         //Init the buttons
         /**
          BackButtonInit();
@@ -87,12 +94,8 @@ public class Chat extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                try {
-                    webSocket.send(messageField.getText().toString());
-                }
-                catch (Exception e){
-                    Log.d("ExceptionSendMessage:", e.getMessage().toString());
-                }
+                sent.append(messageField.getText().toString());
+                webSocket.send(messageField.getText().toString());
             }
         });
     }

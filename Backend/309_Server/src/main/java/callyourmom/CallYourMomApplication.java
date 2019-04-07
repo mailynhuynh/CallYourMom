@@ -7,10 +7,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 
 @SpringBootApplication
-public class CallMyMomApplication {
+public class CallYourMomApplication {
 
 	public static void main(String[] args) throws Exception {
-		SpringApplication.run(CallMyMomApplication.class, args);
+		SpringApplication.run(CallYourMomApplication.class, args);
 	}
 
 }

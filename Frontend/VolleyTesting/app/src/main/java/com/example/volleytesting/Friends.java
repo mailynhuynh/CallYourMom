@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.android.volley.Request;
@@ -29,7 +30,9 @@ public class Friends extends AppCompatActivity {
 
     Button back;
     Button getFriends;
+/*    Button message_button;//button to get to chat page*/
     TextView friends;
+    ImageButton messageButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,11 +43,23 @@ public class Friends extends AppCompatActivity {
         //Back button
         back = findViewById(R.id.backb);
 
+        messageButton = findViewById(R.id.message_button);
+
+/*        MessageButtonInit();//Initializes the message button*/
+
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent backScreen = new Intent(getApplicationContext(), Login.class);
                 startActivity(backScreen);
+            }
+        });
+
+        messageButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Intent chat = new Intent(getApplicationContext(), Chat.class);
+                startActivity(chat);
             }
         });
 
@@ -58,6 +73,17 @@ public class Friends extends AppCompatActivity {
 
 
     }
+
+
+/*    private void MessageButtonInit() {
+        messageButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Intent ChatPage = new Intent(getApplicationContext(), Chat.class);
+                startActivity(ChatPage);
+            }
+        });
+    }*/
 
     /**
      * Parses User JSON objects sent from Server.

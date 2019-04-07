@@ -39,7 +39,7 @@ public class Chat extends AppCompatActivity {
 
         userName = getIntent().getExtras().getString("name");
         messageField = findViewById(R.id.messageTxt);
-        sent = findViewById(R.id.messagesSent);
+        //sent = findViewById(R.id.messagesSent);
         received = findViewById(R.id.messagesReceived);
 
 

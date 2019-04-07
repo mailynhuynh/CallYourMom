@@ -77,6 +77,7 @@ public class MainMenu extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent reminder = new Intent(getApplicationContext(), ReminderCreator.class);
+                reminder.putExtra("name",name);
                 startActivity(reminder);
             }
         });

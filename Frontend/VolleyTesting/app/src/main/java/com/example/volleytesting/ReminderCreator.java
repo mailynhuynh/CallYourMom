@@ -5,6 +5,7 @@ import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -12,30 +13,109 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import org.java_websocket.client.WebSocketClient;
+import org.java_websocket.drafts.Draft;
+import org.java_websocket.drafts.Draft_6455;
+import org.java_websocket.handshake.ServerHandshake;
+
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.Calendar;
 
 import reminderUtil.Reminder;
+import reminderUtil.ReminderReceiver;
 
 public class ReminderCreator extends AppCompatActivity {
 
+    private String uri = "ws://cs309-bs-3.misc.iastate.edu:8080/websocket", user;
     private Reminder reminder;
 
     private static String[] SPINNER_LIST = {"AM","PM"};
 
-    private EditText title, date, time, location;
-    private Button create;
+    private EditText title, date, time, location, username;
+    private Button create, sendToUser;
     private Spinner amOrPm;
+    private WebSocketClient webSocket;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reminder_creator);
 
+        user = getIntent().getExtras().getString("name");
+        uri+=user;
         initFields();
         createPress();
+        sendToUser = findViewById(R.id.tag);
+        sendToUser.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+            @Override
+            public void onClick(View v) {
+                try {
+                    webSocketConnect();
+                } catch (URISyntaxException e) {
+                    e.printStackTrace();
+                }
+                pressSendToUser();
+            }
+        });
 
 
 
+
+    }
+    private void webSocketConnect() throws URISyntaxException {
+
+        Draft[] drafts = {new Draft_6455()};
+        try {
+            webSocket = new WebSocketClient(new URI(uri), drafts[0]) {
+                @Override
+                public void onOpen(ServerHandshake serverHandshake) {
+                    Log.d("OPEN", "run() returned: " + "is connecting");
+                }
+
+                @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+                @Override
+                public void onMessage(String s) {
+                    Log.d("", "run() returned: " + s);
+                    Reminder reminder  = ReminderReceiver.stringToReminder(s);
+                    reminder.setReminder(getApplicationContext());
+
+                }
+
+                @Override
+                public void onClose(int i, String s, boolean b) {
+                    Log.d("CLOSE", "onClose() returned: " + s);
+
+                }
+
+                @Override
+                public void onError(Exception e) {
+                    Log.d("Exception:", e.toString());
+
+                }
+            };
+        }
+        catch (URISyntaxException u){
+            Log.d("Exception", u.getMessage());
+            u.printStackTrace();
+        }
+        webSocket.connect();
+
+
+    }
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    private void pressSendToUser(){
+        try {
+            username = findViewById(R.id.userName);
+            validateAndCreateReminder();
+            webSocket.send(ReminderReceiver.reminderToUser(username.getText().toString(), reminder));
+        }
+        catch (Exception e)
+        {
+            easyToast("No user with this name online");
+            return;
+        }
 
     }
     private void createPress()
@@ -45,28 +125,45 @@ public class ReminderCreator extends AppCompatActivity {
             @RequiresApi(api = Build.VERSION_CODES.KITKAT)
             @Override
             public void onClick(View v) {
-                if(!validateDate("/")){
-                    easyToast("Please enter a valid date");
-                    date.setText("");
-                    return;
-                }
-                String enteredDate = date.getText().toString();
-                if(!validateTime()) {
-                    easyToast("Please enter a valid time.");
-                    time.setText("");
-                    return;
-                }
-                String enteredTime = time.getText().toString();
-
-                String enteredTitle = title.getText().toString();
-                String enteredLocation = location.getText().toString();
-                boolean isAM = amOrPm.getSelectedItem().toString().equals("AM");
-
-                createReminder(enteredDate, enteredTime, enteredTitle, enteredLocation, isAM);
+                validateAndCreateReminder();
 
             }
         });
     }
+
+    /**
+     * Validates the input data and calls createReminder
+     */
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    private void validateAndCreateReminder(){
+        if(!validateDate("/")){
+            easyToast("Please enter a valid date");
+            date.setText("");
+            return;
+        }
+        String enteredDate = date.getText().toString();
+        if(!validateTime()) {
+            easyToast("Please enter a valid time.");
+            time.setText("");
+            return;
+        }
+        String enteredTime = time.getText().toString();
+
+        String enteredTitle = title.getText().toString();
+        String enteredLocation = location.getText().toString();
+        boolean isAM = amOrPm.getSelectedItem().toString().equals("AM");
+
+        createReminder(enteredDate, enteredTime, enteredTitle, enteredLocation, isAM);
+    }
+
+    /**
+     * Creates reminder given by entered data.
+     * @param date
+     * @param time
+     * @param title
+     * @param location
+     * @param isAM
+     */
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     private void createReminder(String date, String time, String title, String location, boolean isAM)
     {

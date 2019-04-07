@@ -41,6 +41,7 @@ public class ReminderCreator extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reminder_creator);
+        uri+="/"+user;
         try {
             webSocketConnect();
         } catch (URISyntaxException e) {
@@ -48,7 +49,6 @@ public class ReminderCreator extends AppCompatActivity {
         }
 
         user = getIntent().getExtras().getString("name");
-        uri+="/"+user;
         initFields();
         createPress();
         sendToUser = findViewById(R.id.tag);

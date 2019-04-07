@@ -26,7 +26,6 @@ public class Chat extends AppCompatActivity {
 
     private String userName;
     private String uri = "ws://cs309-bs-3.misc.iastate.edu:8080/websocket";
-    String tempURI = "ws://localhost:80
     Button send;
     EditText messageField;
     TextView sent;

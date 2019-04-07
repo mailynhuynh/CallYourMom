@@ -29,6 +29,7 @@ import app.AppController;
  */
 public class Friends extends AppCompatActivity {
 
+    private String userName;
     Button back;
     Button getFriends;
 /*    Button message_button;//button to get to chat page*/
@@ -47,6 +48,8 @@ public class Friends extends AppCompatActivity {
 
         messageButton = findViewById(R.id.message_button);
 
+        userName = getIntent().getExtras().getString("name");
+
 /*        MessageButtonInit();//Initializes the message button*/
 
         back.setOnClickListener(new View.OnClickListener() {
@@ -61,6 +64,7 @@ public class Friends extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent chat = new Intent(getApplicationContext(), Chat.class);
+                chat.putExtra("name",userName);
                 startActivity(chat);
             }
         });

@@ -14,6 +14,7 @@ public class MainMenu extends AppCompatActivity {
     Button events;
     ImageButton profile;
     Button reminders;
+    private String name;
 
     TextView nameOfUser;
     @Override
@@ -21,7 +22,7 @@ public class MainMenu extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
         Bundle bundle = getIntent().getExtras();
-        String name = bundle.getString("name");
+        name = bundle.getString("name");
 
         nameOfUser = findViewById(R.id.user_name);
         nameOfUser.setText(name);
@@ -40,6 +41,7 @@ public class MainMenu extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent friends = new Intent(getApplicationContext(), Friends.class);
+                friends.putExtra("name",name);
                 startActivity(friends);
 
             }

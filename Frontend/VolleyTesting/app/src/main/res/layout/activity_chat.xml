@@ -7,84 +7,54 @@
     android:layout_height="match_parent"
     tools:context=".Chat">
 
+    <EditText
+        android:id="@+id/messageTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="13dp"
+        android:layout_marginLeft="13dp"
+        android:layout_marginBottom="21dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:selectAllOnFocus="true"
+        android:text="Send Message" />
+
     <TextView
-        android:layout_width="63dp"
-        android:layout_height="wrap_content"
+        android:id="@+id/messagesReceived"
+        android:layout_width="142dp"
+        android:layout_height="442dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="189dp"
-        android:layout_marginLeft="189dp"
-        android:layout_marginTop="141dp"
-        android:layout_marginEnd="158dp"
-        android:layout_marginRight="158dp"
-        android:layout_marginBottom="571dp"
-        android:text="@string/Chat" />
-<!--        app:layout_contraintBottom_toBottomOf="parent"
-        app:layout_contraintLeft_toLeftOf="parent"
-        app:layout_contraintRight_toRightOf="parent"
-        app:layout_contraintTop_toTopOf="parent"-->
+        android:layout_marginStart="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="12dp" />
 
-
-    <ImageButton
-        android:id="@+id/imageButton2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
+    <TextView
+        android:id="@+id/messagesSent"
+        android:layout_width="139dp"
+        android:layout_height="441dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="24dp"
-        android:layout_marginLeft="24dp"
-        android:layout_marginTop="14dp"
-        android:layout_marginEnd="340dp"
-        android:layout_marginRight="340dp"
-        android:layout_marginBottom="674dp"
-        android:contentDescription="@string/BackButton"
-        app:srcCompat="?attr/homeAsUpIndicator" />
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginRight="15dp" />
 
-    <ImageButton
-        android:id="@+id/imageButton4"
-        android:layout_width="104dp"
+    <Button
+        android:id="@+id/send"
+        android:layout_width="65dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="128dp"
-        android:layout_marginLeft="128dp"
-        android:layout_marginTop="49dp"
-        android:layout_marginEnd="179dp"
-        android:layout_marginRight="179dp"
-        android:layout_marginBottom="483dp"
-        android:contentDescription="@string/UserImage"
-        tools:srcCompat="@tools:sample/avatars[3]" />
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="22dp"
+        android:text="Send" />
 
-    <ImageButton
-        android:id="@+id/imageButton5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="327dp"
-        android:layout_marginLeft="327dp"
-        android:layout_marginTop="649dp"
-        android:layout_marginEnd="29dp"
-        android:layout_marginRight="29dp"
-        android:layout_marginBottom="31dp"
-        android:contentDescription="@string/MessageButton"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
-
-    </RelativeLayout>
+</RelativeLayout>
 

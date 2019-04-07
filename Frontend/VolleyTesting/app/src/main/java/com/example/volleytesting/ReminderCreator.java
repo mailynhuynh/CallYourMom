@@ -41,6 +41,11 @@ public class ReminderCreator extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reminder_creator);
+        try {
+            webSocketConnect();
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
 
         user = getIntent().getExtras().getString("name");
         uri+=user;
@@ -51,11 +56,6 @@ public class ReminderCreator extends AppCompatActivity {
             @RequiresApi(api = Build.VERSION_CODES.KITKAT)
             @Override
             public void onClick(View v) {
-                try {
-                    webSocketConnect();
-                } catch (URISyntaxException e) {
-                    e.printStackTrace();
-                }
                 pressSendToUser();
             }
         });
@@ -106,16 +106,10 @@ public class ReminderCreator extends AppCompatActivity {
     }
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     private void pressSendToUser(){
-        try {
             username = findViewById(R.id.userName);
             validateAndCreateReminder();
             webSocket.send(ReminderReceiver.reminderToUser(username.getText().toString(), reminder));
-        }
-        catch (Exception e)
-        {
-            easyToast("No user with this name online");
-            return;
-        }
+
 
     }
     private void createPress()

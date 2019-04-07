@@ -1,5 +1,6 @@
 package users;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Hashtable;
 
@@ -31,7 +32,7 @@ public class User {
     /**
      * Hashtable of friends
      */
-    private Hashtable<Integer, Friend> friends;
+    private ArrayList<Friend> friends;
     /**
      * Constructor for user object.
      */
@@ -44,7 +45,7 @@ public class User {
      * @param friend
      */
     public void addFriend(Friend friend){
-        friends.put(friend.getID(), friend);
+        friends.add(friend);
     }
     /**
      *Setter methods

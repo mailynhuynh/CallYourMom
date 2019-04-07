@@ -43,7 +43,7 @@ public class Chat extends AppCompatActivity {
         received = findViewById(R.id.messagesReceived);
 
 
-        //uri += "/" + userName;
+        uri += "/" + userName;
         Draft[] drafts = {new Draft_6455()};
 
         try {
@@ -72,7 +72,7 @@ public class Chat extends AppCompatActivity {
             };
 
         } catch (URISyntaxException u) {
-            Log.d("Exception", u.getMessage().toString());
+            Log.d("Exception", u.getMessage());
             u.printStackTrace();
         }
         webSocket.connect();
@@ -94,8 +94,8 @@ public class Chat extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                sent.append(messageField.getText().toString());
                 webSocket.send(messageField.getText().toString());
+
             }
         });
     }

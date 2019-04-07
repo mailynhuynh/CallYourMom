@@ -1,4 +1,4 @@
-package mockito;
+package test;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.times;
@@ -19,7 +19,7 @@ import callyourmom.repository.ReminderRepository;
 import callyourmom.service.ReminderService;
 import callyourmom.user.Reminder;
 
-public class MockitoTest_Reminder {
+public class ReminderTest {
 
 	@InjectMocks
 	ReminderService service;
@@ -80,5 +80,4 @@ public class MockitoTest_Reminder {
 		String title = result.getTitle();		
 		assertEquals("MockitoTest3", title);
 	}
-
 }

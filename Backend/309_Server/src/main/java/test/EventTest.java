@@ -1,4 +1,4 @@
-package mockito;
+package test;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.times;
@@ -18,64 +18,63 @@ import callyourmom.repository.*;
 import callyourmom.service.*;
 import callyourmom.user.*;
 
-public class MockitoTest_User {
+public class EventTest {
 
 	@InjectMocks
-	UserService service;
+	EventService service;
 
 	@Mock
-	UserRepository repo;
+	EventRepository repo;
 
 	@Before
 	public void init() {
 		MockitoAnnotations.initMocks(this);
-		User r = new User();
+		Event r = new Event();
 		r.setId(1);
 
 	}
 
 	@Test
-	public void getUserByIDTest() {
+	public void getEventByIDTest() {
 
-		User r = new User();
+		Event r = new Event();
 		r.setId(1);
-		r.setUserName("Zoe~");
+		r.setTitle("MockitoTest1");
 
 		when(repo.getOne(1)).thenReturn(r);
 
-		User result = service.get(1);
-		assertEquals("Zoe~", result.getUserName());
+		Event result = service.get(1);
+		assertEquals("MockitoTest1", result.getTitle());
 	}
 
 	@Test
-	public void getAllUserTest() {
+	public void getAllEventTest() {
 
-		List<User> rList = new ArrayList<>();
-		User r1 = new User();
-		User r2 = new User();
-		User r3 = new User();
+		List<Event> rList = new ArrayList<>();
+		Event r1 = new Event();
+		Event r2 = new Event();
+		Event r3 = new Event();
 
 		rList.add(r1);
 		rList.add(r2);
 		rList.add(r3);
 
 		when(repo.findAll()).thenReturn(rList);
-		List<User> result = service.getAll();
+		List<Event> result = service.getAll();
 		assertEquals(rList, result);
 	}
 
 	@Test
-	public void createUserTest() {
+	public void createEventTest() {
 
-		User newUser = new User();
-		newUser.setId(3);
-		newUser.setUserName("I'm a new user");
+		Event newEvent = new Event();
+		newEvent.setId(3);
+		newEvent.setTitle("MockitoTest3");
 
-		when(repo.save(newUser)).thenReturn(newUser);
-		User result = service.create(newUser);
-		String un = result.getUserName();
-		assertEquals("I'm a new user", un);
+		when(repo.save(newEvent)).thenReturn(newEvent);
+		Event result = service.create(newEvent);
+		String title = result.getTitle();
+		assertEquals("MockitoTest3", title);
 	}
 
 }
-

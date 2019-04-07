@@ -1,6 +1,7 @@
 package com.example.volleytesting;
 
 import android.annotation.TargetApi;
+import android.content.Context;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
@@ -66,6 +67,7 @@ public class ReminderCreator extends AppCompatActivity {
     }
     private void webSocketConnect() throws URISyntaxException {
 
+        final Context context = getApplicationContext();
         Draft[] drafts = {new Draft_6455()};
         try {
             webSocket = new WebSocketClient(new URI(uri), drafts[0]) {
@@ -79,7 +81,7 @@ public class ReminderCreator extends AppCompatActivity {
                 public void onMessage(String s) {
                     Log.d("", "run() returned: " + s);
                     Reminder reminder  = ReminderReceiver.stringToReminder(s);
-                    reminder.setReminder(getApplicationContext());
+                    reminder.setReminder(context);
 
                 }
 

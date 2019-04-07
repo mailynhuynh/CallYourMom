@@ -48,7 +48,7 @@ public class ReminderCreator extends AppCompatActivity {
         }
 
         user = getIntent().getExtras().getString("name");
-        uri+=user;
+        uri+="/"+user;
         initFields();
         createPress();
         sendToUser = findViewById(R.id.tag);

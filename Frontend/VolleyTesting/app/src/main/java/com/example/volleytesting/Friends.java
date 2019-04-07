@@ -1,5 +1,6 @@
 package com.example.volleytesting;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -23,17 +24,19 @@ import org.json.JSONObject;
 import app.AppController;
 
 /**
- * @author ZoeS
+ *
  * This class is currently for connectivity demonstration purposes only. WILL become friends list.
  */
 public class Friends extends AppCompatActivity {
 
+    private String userName;
     Button back;
     Button getFriends;
 /*    Button message_button;//button to get to chat page*/
     TextView friends;
     ImageButton messageButton;
 
+    @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,6 +47,8 @@ public class Friends extends AppCompatActivity {
         back = findViewById(R.id.backb);
 
         messageButton = findViewById(R.id.message_button);
+
+        userName = getIntent().getExtras().getString("name");
 
 /*        MessageButtonInit();//Initializes the message button*/
 
@@ -59,6 +64,7 @@ public class Friends extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent chat = new Intent(getApplicationContext(), Chat.class);
+                chat.putExtra("name",userName);
                 startActivity(chat);
             }
         });

@@ -18,6 +18,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Friend_Profile" />
         <activity android:name=".MainMenu" />
+        <activity android:name=".ReminderCreator"/>
         <activity android:name=".Friends" />
         <activity android:name=".Login">
             <intent-filter>
@@ -26,7 +27,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
+        <receiver android:name="reminderUtil.ReminderBroadcastReceiver"/>
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

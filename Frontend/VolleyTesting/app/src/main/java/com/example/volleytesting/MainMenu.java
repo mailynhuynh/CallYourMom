@@ -1,8 +1,8 @@
 package com.example.volleytesting;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -14,6 +14,7 @@ public class MainMenu extends AppCompatActivity {
     Button events;
     ImageButton profile;
     Button reminders;
+    private String name;
 
     TextView nameOfUser;
     @Override
@@ -21,7 +22,7 @@ public class MainMenu extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
         Bundle bundle = getIntent().getExtras();
-        String name = bundle.getString("name");
+        name = bundle.getString("name");
 
         nameOfUser = findViewById(R.id.user_name);
         nameOfUser.setText(name);
@@ -40,6 +41,7 @@ public class MainMenu extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent friends = new Intent(getApplicationContext(), Friends.class);
+                friends.putExtra("name",name);
                 startActivity(friends);
 
             }
@@ -74,7 +76,8 @@ public class MainMenu extends AppCompatActivity {
         reminders.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO
+                Intent reminder = new Intent(getApplicationContext(), ReminderCreator.class);
+                startActivity(reminder);
             }
         });
     }

@@ -14,15 +14,16 @@ public class ReminderReceiver {
     public  ReminderReceiver(){
 
     }
+    //TODO - fix format notation to allow for spaces in Strings.
     /**
      * Format goes
-     *  {title} {location} {month} {day} {year} {hour} {minute}
+     *  %{title}-{location}-{month}-{day}-{year}-{hour}-{minute}
      * @return
      */
-    private static String reminderToDataString(Reminder reminder){
-        String reminderFormatted = reminder.getTitle()+" "+reminder.getLocation()
-                +" "+reminder.getMonth()+" "+reminder.getDay()+" "+reminder.getYear()
-                +" "+reminder.getHour()+" "+reminder.getMinute();
+    public static String reminderToDataString(Reminder reminder){
+        String reminderFormatted = "%"+reminder.getTitle()+"-"+reminder.getLocation()
+                +"-"+reminder.getMonth()+"-"+reminder.getDay()+"-"+reminder.getYear()
+                +"-"+reminder.getHour()+"-"+reminder.getMinute();
 
         return reminderFormatted;
     }
@@ -34,16 +35,18 @@ public class ReminderReceiver {
      */
     public static Reminder stringToReminder(String str)
     {
-        Scanner scan = new Scanner(str);
         Reminder reminder = new Reminder();
+        str = str.split("%")[1];
 
-        reminder.setTitle(scan.next());
-        reminder.setLocation(scan.next());
-        reminder.setMonth(scan.nextInt());
-        reminder.setDay(scan.nextInt());
-        reminder.setYear(scan.nextInt());
-        reminder.setHour(scan.nextInt());
-        reminder.setMinute(scan.nextInt());
+        String[] stringArr = str.split("-");
+
+        reminder.setTitle(stringArr[0]);
+        reminder.setLocation(stringArr[1]);
+        reminder.setMonth(Integer.parseInt(stringArr[2]));
+        reminder.setDay(Integer.parseInt(stringArr[3]));
+        reminder.setYear(Integer.parseInt(stringArr[4]));
+        reminder.setHour(Integer.parseInt(stringArr[5]));
+        reminder.setMinute(Integer.parseInt(stringArr[6]));
 
         return reminder;
     }

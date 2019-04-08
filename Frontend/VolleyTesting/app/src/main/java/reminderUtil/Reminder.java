@@ -187,4 +187,22 @@ public class Reminder {
 
     }
 
+    /**
+     * Override for reminder equals()
+     * @param o
+     * @return
+     */
+    @Override
+    public boolean equals(Object o){
+
+        Reminder r = (Reminder) o;
+        if(this.getTitle().equals(r.getTitle()) && this.getLocation().equals(r.getLocation())
+        && this.getMonth()==r.getMonth() && this.getDay() == r.getDay() && this.getYear() == r.getYear() &&
+        this.getHour() == r.getHour() && this.getMinute() == r.getMinute())
+        {
+            return true;
+        }
+        return false;
+    }
+
 }

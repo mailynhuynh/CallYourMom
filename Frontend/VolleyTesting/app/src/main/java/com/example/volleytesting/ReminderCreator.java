@@ -26,9 +26,12 @@ import java.util.Calendar;
 import reminderUtil.Reminder;
 import reminderUtil.ReminderReceiver;
 
+/**
+ * @author ZoeS
+ */
 public class ReminderCreator extends AppCompatActivity {
 
-    private String uri = "ws://cs309-bs-3.misc.iastate.edu:8080/websocket", user;
+    private String uri = "ws://cs309-bs-3.misc.iastate.edu:8080/websocket/", user;
     private Reminder reminder;
 
     private static String[] SPINNER_LIST = {"AM","PM"};
@@ -42,8 +45,9 @@ public class ReminderCreator extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reminder_creator);
+        username = findViewById(R.id.userName);
         user = getIntent().getExtras().getString("name");
-        uri+="/"+user;
+        uri += user;
         try {
             webSocketConnect();
         } catch (URISyntaxException e) {
@@ -62,9 +66,12 @@ public class ReminderCreator extends AppCompatActivity {
         });
 
 
-
-
     }
+
+    /**
+     * Method to connect the websocket
+     * @throws URISyntaxException
+     */
     private void webSocketConnect() throws URISyntaxException {
 
         final Context context = getApplicationContext();
@@ -106,14 +113,21 @@ public class ReminderCreator extends AppCompatActivity {
 
 
     }
+
+    /**
+     * Sends reminder in form of reminder-format-string to user. Called in onClick for tag button.
+     */
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     private void pressSendToUser(){
-            username = findViewById(R.id.userName);
             validateAndCreateReminder();
             webSocket.send(ReminderReceiver.reminderToUser(username.getText().toString(), reminder));
 
 
     }
+
+    /**
+     * Initializes the set create alarm button and sets its onClick behavior.
+     */
     private void createPress()
     {
         create.setOnClickListener(new View.OnClickListener() {

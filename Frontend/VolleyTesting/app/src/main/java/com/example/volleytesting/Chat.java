@@ -28,7 +28,6 @@ public class Chat extends AppCompatActivity {
     private String uri = "ws://cs309-bs-3.misc.iastate.edu:8080/websocket";
     Button send;
     EditText messageField;
-    TextView sent;
     TextView received;
     private WebSocketClient webSocket;
 
@@ -95,6 +94,7 @@ public class Chat extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 webSocket.send(messageField.getText().toString());
+                messageField.setText("");
 
             }
         });

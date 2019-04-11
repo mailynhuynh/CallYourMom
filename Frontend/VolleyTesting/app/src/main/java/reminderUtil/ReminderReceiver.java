@@ -29,7 +29,10 @@ public class ReminderReceiver {
     }
 
     /**
-     * Takes a string of the format above and converts it into a reminder object.
+     * Takes a string of the format in
+     * {@link #reminderToDataString(Reminder) reminderToDataString(Reminder reminder)}
+     * and converts it into a reminder object.
+     *
      * @param str
      * @return
      */

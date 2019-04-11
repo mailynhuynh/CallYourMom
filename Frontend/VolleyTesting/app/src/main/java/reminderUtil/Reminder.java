@@ -21,6 +21,7 @@ import users.User;
 
 
 /**
+ * @author ZoeS
  * Reminder class.
  */
 public class Reminder {

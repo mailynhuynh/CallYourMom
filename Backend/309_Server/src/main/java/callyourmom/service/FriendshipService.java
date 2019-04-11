@@ -5,9 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import callyourmom.repository.EventRepository;
 import callyourmom.repository.*;
-import callyourmom.user.Event;
 import callyourmom.user.Friendship;
 import callyourmom.user.User;
 

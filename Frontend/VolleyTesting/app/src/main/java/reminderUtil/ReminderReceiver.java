@@ -1,6 +1,5 @@
 package reminderUtil;
 
-import java.util.Scanner;
 
 /**
  * @author ZoeS

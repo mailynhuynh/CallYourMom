@@ -13,16 +13,30 @@ public class UserController {
 	@Autowired // @Autowired attribute injects UserService into this class
 	UserService userService;
 	
+	/**
+	 * 
+	 * @return a user
+	 */
 	@GetMapping("/users")
 	List<User> get() {
 	    return userService.getAll();
 	}
 	
+	/**
+	 * 
+	 * @param id
+	 * @return a user by it's specified id
+	 */
 	@GetMapping("/users/{id}")
 	User get(@PathVariable Integer id) {
 	    return userService.get(id);
 	}
 
+	/**
+	 * 
+	 * @param user
+	 * @return adds a user 
+	 */
 	@PostMapping("/users")
 	User post(@RequestBody User user) {
 	    return userService.create(user);

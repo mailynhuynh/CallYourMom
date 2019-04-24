@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"callyourmom.controller"},{"l":"callyourmom.repository"},{"l":"callyourmom.service"},{"l":"callyourmom.user"},{"l":"test"},{"l":"websocket"}]

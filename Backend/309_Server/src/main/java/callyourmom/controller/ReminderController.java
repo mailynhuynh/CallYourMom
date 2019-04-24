@@ -15,8 +15,8 @@ public class ReminderController {
 	ReminderService reminderService;
 	
 	/**
-	 * 
-	 * @return gets all of the reminders
+	 * Gets all of the reminders
+	 * @return a reminder
 	 */
 	@GetMapping("/reminders")
 	List<Reminder> get() {
@@ -24,9 +24,9 @@ public class ReminderController {
 	}
 	
 	/**
-	 * 
+	 * Gets a reminder specified by id
 	 * @param id
-	 * @return gets a specific reminderService by it's id
+	 * @return a reminder
 	 */
 	@GetMapping("/reminders/{id}")
 	Reminder get(@PathVariable Integer id) {
@@ -34,16 +34,12 @@ public class ReminderController {
 	}
 	
 	/**
-	 * 
+	 * Adds a reminder
 	 * @param reminder
-	 * @return adds a reminder
+	 * @return a reminder
 	 */
 	@PostMapping("/reminders")
 	Reminder post(@RequestBody Reminder reminder) {
 	    return reminderService.create(reminder);
 	}
-	
-	
-	
-	
 }

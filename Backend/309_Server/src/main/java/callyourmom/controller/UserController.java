@@ -14,8 +14,8 @@ public class UserController {
 	UserService userService;
 	
 	/**
-	 * 
-	 * @return a user
+	 * Gets a list of all the users
+	 * @return user
 	 */
 	@GetMapping("/users")
 	List<User> get() {
@@ -23,9 +23,9 @@ public class UserController {
 	}
 	
 	/**
-	 * 
-	 * @param id
-	 * @return a user by it's specified id
+	 * Gets a user specified by it's id
+	 * @param the id 
+	 * @return user
 	 */
 	@GetMapping("/users/{id}")
 	User get(@PathVariable Integer id) {
@@ -33,9 +33,9 @@ public class UserController {
 	}
 
 	/**
-	 * 
-	 * @param user
-	 * @return adds a user 
+	 * Adds a user
+	 * @param the user
+	 * @return user
 	 */
 	@PostMapping("/users")
 	User post(@RequestBody User user) {

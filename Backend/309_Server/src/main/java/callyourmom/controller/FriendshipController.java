@@ -15,8 +15,8 @@ public class FriendshipController {
 	FriendshipService FriendshipService;
 	
 	/**
-	 * 
-	 * @return a list of all the friendships
+	 * Gets a list of all the friendships
+	 * @return all of the friendships
 	 */
 	@GetMapping("/friendship")
 	List<Friendship> get() {
@@ -24,9 +24,9 @@ public class FriendshipController {
 	}
 	
 	/**
-	 * 
+	 * Gets a friendship by it's individual id
 	 * @param id
-	 * @return the friendship that is specified by it's id
+	 * @return a friendship
 	 */
 	@GetMapping("/friendship/{id}")
 	Friendship get(@PathVariable Integer id) {
@@ -34,9 +34,9 @@ public class FriendshipController {
 	}
 
 	/**
-	 * 
+	 * Adds a friendship
 	 * @param f
-	 * @return adds a friendship
+	 * @return a friendship
 	 */
 	@PostMapping("/friendship")
 	Friendship post(@RequestBody Friendship f) {
@@ -44,9 +44,9 @@ public class FriendshipController {
 	}
 	
 	/**
-	 * 
+	 * Gets a user based on it's friendship id
 	 * @param id
-	 * @return checks what the relationship of the friendship is
+	 * @return a user
 	 */
 	@GetMapping("/friendship/friend/{id}")
 	User getFriend(@PathVariable Integer id) {

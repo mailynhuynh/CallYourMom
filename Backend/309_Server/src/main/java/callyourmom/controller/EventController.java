@@ -15,17 +15,18 @@ public class EventController {
 	EventService eventService;
 	
 	/**
-	 * @return a list of all the events
+	 * Gets a list of all the events
+	 * @return the list of events
 	 */
 	@GetMapping("/events")
 	List<Event> get() {
 	    return eventService.getAll();
 	}
-	
+
 	/**
-	 * 
+	 * Gets an individual event by the id
 	 * @param id
-	 * @return the event that is specified by it's id
+	 * @return an event
 	 */
 	@GetMapping("/events/{id}")
 	Event get(@PathVariable Integer id) {
@@ -33,9 +34,9 @@ public class EventController {
 	}
 
 	/**
-	 * 
+	 * Adds an event
 	 * @param event
-	 * @return adds an event
+	 * @return an event
 	 */
 	@PostMapping("/events")
 	Event post(@RequestBody Event event) {

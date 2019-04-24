@@ -15,8 +15,8 @@ public class SettingsController {
 	SettingsService settingsService;
 	
 	/**
-	 * 
-	 * @return gets the settings for all of the users
+	 * Gets all of the settings
+	 * @return a list of setting objects
 	 */
 	@GetMapping("/settings")
 	List<Settings> get() {
@@ -24,9 +24,9 @@ public class SettingsController {
 	}
 	
 	/**
-	 * 
+	 * Gets a specific setting based on it's id
 	 * @param id
-	 * @return gets the settings for a particular user by it's id
+	 * @return a setting
 	 */
 	@GetMapping("/settings/{id}")
 	Settings get(@PathVariable Integer id) {
@@ -34,9 +34,9 @@ public class SettingsController {
 	}
 
 	/**
-	 * 
+	 * Adds a setting configuration
 	 * @param setting
-	 * @return adds a setting configuration for a particular user
+	 * @return a setting
 	 */
 	@PostMapping("/settings")
 	Settings post(@RequestBody Settings setting) {

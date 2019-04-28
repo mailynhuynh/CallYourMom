@@ -20,6 +20,7 @@ public class ReminderController {
 	 */
 	@GetMapping("/reminders")
 	List<Reminder> get() {
+		
 	    return reminderService.getAll();
 	}
 	

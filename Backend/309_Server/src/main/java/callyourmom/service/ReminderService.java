@@ -27,6 +27,17 @@ public class ReminderService {
 		return reminderRepository.save(reminder);
 	}
 
+	public Reminder testgetMostRecent(Reminder A, Reminder B) {
+		//List<Reminder> all = reminderRepository.findAll();
+
+		Reminder mostRecent = new Reminder();
+
+		mostRecent = A;
+		if (earlier(B, A))
+			return B;
+		return A;
+	}
+	
 	public Reminder getMostRecent() {
 		List<Reminder> all = reminderRepository.findAll();
 
@@ -42,8 +53,6 @@ public class ReminderService {
 
 		}
 		return mostRecent;
-
-		// TODO Auto-generated method stubreturn null;
 	}
 
 	private boolean earlier(Reminder A, Reminder B) {

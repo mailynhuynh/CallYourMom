@@ -1,5 +1,6 @@
 package callyourmom.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -27,13 +28,22 @@ public class ReminderService {
 		return reminderRepository.save(reminder);
 	}
 
-	
 	public Reminder getMostRecent() {
 		List<Reminder> all = reminderRepository.findAll();
+		
+// 		DEBUG:
+//		Reminder A = new Reminder();
+//		A.setTime("4/22/2019 7:00");
+//		Reminder B = new Reminder();
+//		B.setTime("4/22/2019 11:00");
+//		Reminder C = new Reminder();
+//		C.setTime("4/25/2019 9:00");
+//
+//		all.add(A);
+//		all.add(B);
+//		all.add(C);
 
-		Reminder mostRecent = new Reminder();
-
-		mostRecent = all.get(0);
+		Reminder mostRecent = all.get(0);
 
 		for (int i = 1; i < all.size(); i++) {
 
@@ -54,9 +64,10 @@ public class ReminderService {
 
 		if (compareDate(datetimeA[0], datetimeB[0])) {
 			return true;
-		}else if (compareTime(datetimeA[1], datetimeB[1]))
-				return true;
-		
+		} else if (datetimeA.equals(datetimeB)) {
+			return compareTime(datetimeA[1], datetimeB[1]);
+		}
+
 		return false;
 
 	}
@@ -64,17 +75,17 @@ public class ReminderService {
 	private boolean compareDate(String A, String B) {
 		String[] dateA = A.split("/");
 		String[] dateB = B.split("/");
-		
+
 		if (Integer.valueOf(dateA[2]) < (Integer.valueOf(dateB[2]))) {
 			return true;
-		}else if (Integer.valueOf(dateA[2]) ==  (Integer.valueOf(dateB[2]))) {
+		} else if (Integer.valueOf(dateA[2]).equals(Integer.valueOf(dateB[2]))) {
 			if (Integer.valueOf(dateA[0]) < (Integer.valueOf(dateB[0]))) {
 				return true;
-			} else if (Integer.valueOf(dateA[0]) ==  (Integer.valueOf(dateB[0]))) {
-				if (Integer.valueOf(dateA[1]) < (Integer.valueOf(dateB[1]))) 
+			} else if (Integer.valueOf(dateA[0]).equals(Integer.valueOf(dateB[0]))) {
+				if (Integer.valueOf(dateA[1]) < (Integer.valueOf(dateB[1])))
 					return true;
-				}
 			}
+		}
 
 		return false;
 	}
@@ -85,12 +96,11 @@ public class ReminderService {
 
 		if (Integer.valueOf(dateA[0]) < (Integer.valueOf(dateB[0]))) {
 			return true;
-		}else if (Integer.valueOf(dateA[0]) == (Integer.valueOf(dateB[0]))) {
+		} else if (Integer.valueOf(dateA[0]).equals(Integer.valueOf(dateB[0]))) {
 			if (Integer.valueOf(dateA[1]) < (Integer.valueOf(dateB[1]))) {
 				return true;
 			}
 		}
-			
 
 		return false;
 	}

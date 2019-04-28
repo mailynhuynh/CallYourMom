@@ -62,11 +62,13 @@ public class MainMenu extends AppCompatActivity {
     }
     private void eventsListInit()
     {
-        eventsList = findViewById(R.id.events);
+        eventsList = findViewById(R.id.eventsList);
         eventsList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO
+                Intent events_list = new Intent(getApplicationContext(), EventsList.class);
+                /*reminder.putExtra("name",name);*/
+                startActivity(events_list);
             }
         });
     }

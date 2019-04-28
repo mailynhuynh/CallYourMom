@@ -12,10 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity
-            android:name=".RemindersList"
-            android:label="@string/title_activity_reminders_list"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".EventsList"></activity>
         <activity
             android:name=".Chat"
             android:label="@string/title_activity_chat"

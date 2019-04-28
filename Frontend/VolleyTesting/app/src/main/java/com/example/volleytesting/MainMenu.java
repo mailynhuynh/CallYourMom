@@ -11,7 +11,7 @@ import android.widget.TextView;
 public class MainMenu extends AppCompatActivity {
 
     Button friends;
-    Button events;
+    Button eventsList;
     ImageButton profile;
     Button reminders;
     private String name;
@@ -29,7 +29,7 @@ public class MainMenu extends AppCompatActivity {
         //Init the buttons
         friendsButtonInit();
         profileInit();
-        eventsInit();
+        eventsListInit();
         remindersInit();
 
     }
@@ -60,10 +60,10 @@ public class MainMenu extends AppCompatActivity {
             }
         });
     }
-    private void eventsInit()
+    private void eventsListInit()
     {
-        events = findViewById(R.id.events);
-        events.setOnClickListener(new View.OnClickListener() {
+        eventsList = findViewById(R.id.events);
+        eventsList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //TODO

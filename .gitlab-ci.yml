@@ -24,7 +24,7 @@ maven-test:
   tags:
     - spring_tag
   script:
-    - cd Spring
+    - cd Backend/309_Server
     - mvn test
   artifacts:
     paths:

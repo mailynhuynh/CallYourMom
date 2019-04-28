@@ -22,8 +22,8 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
 	</properties>
-	
-	
+
+
 
 	<dependencies>
 		<!-- Spring and Spring Boot dependencies -->
@@ -57,6 +57,13 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+			<scope>test</scope>
+		</dependency>
+
 
 		<!-- Databases - Uses MySQL -->
 		<dependency>
@@ -76,14 +83,14 @@
 			<artifactId>spring-websocket</artifactId>
 			<version>5.1.6.RELEASE</version>
 		</dependency>
-		
-		 <dependency>
-    		<groupId>org.mockito</groupId>
-    		<artifactId>mockito-core</artifactId>
-			<version>2.21.0</version> 
+
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-core</artifactId>
+			<version>2.21.0</version>
 		</dependency>
-		
-		
+
+
 	</dependencies>
 
 	<build>

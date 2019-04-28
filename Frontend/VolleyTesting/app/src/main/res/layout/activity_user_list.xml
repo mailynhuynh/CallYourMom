@@ -73,7 +73,7 @@
         app:layout_constraintVertical_bias="0.974" />
 
     <ImageButton
-        android:id="@+id/message_button"
+        android:id="@+id/messagebutton"
         android:layout_width="88dp"
         android:layout_height="53dp"
         android:layout_marginBottom="8dp"

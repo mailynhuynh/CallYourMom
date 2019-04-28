@@ -1,22 +1,26 @@
 package reminderUtil;
 
-import android.widget.Toast;
+
+import android.widget.TextView;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
 import app.AppController;
 
 public class ReminderGet {
+    private TextView v;
     /**
      * Url for request
      */
@@ -24,27 +28,32 @@ public class ReminderGet {
     /**
      * Request queue for JSON objects.
      */
-    private RequestQueue rq;
+    private RequestQueue rq = AppController.getInstance().getRequestQueue();
 
-    private Reminder r1;
     /**
      * @param url Url of server
      */
     public ReminderGet(String url) {
         this.url = url;
-        rq = AppController.getInstance().getRequestQueue();
+    }
+    public void setTextView(TextView v){
+        this.v = v;
     }
 
-    public ArrayList<String> listReminders() {
-        final ArrayList<String> reminders = new ArrayList<>();
+    public void listReminders() {
         JsonArrayRequest arrayRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
 
             @Override
             public void onResponse(JSONArray response) {
+                JSONObject rem;
                 for(int i = 0; i < response.length(); i++){
                     try {
-                        JSONObject rem = response.getJSONObject(i);
-                        reminders.add(JSONtoReminder(rem).toString());
+                        rem = response.getJSONObject(i);
+                        Reminder reminder = new Reminder();
+                        reminder.setTitle(rem.getString("title"));
+                        reminder.setLocation(rem.getString("location"));
+                        dateTimeSet(reminder, rem.getString("time"));
+                        v.append(reminder.toString()+"\n");
 
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -61,28 +70,9 @@ public class ReminderGet {
             }
         });
         rq.add(arrayRequest);
-
-
-
-        return reminders;
     }
 
-    public Reminder JSONtoReminder(JSONObject obj){
-        Reminder reminder = new Reminder();
-        try {
-            reminder.setTitle(obj.getString("title"));
-            reminder.setLocation(obj.getString("location"));
-            dateTimeSet(reminder, obj.getString("time"));
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-        return reminder;
-
-    }
-
-    private void dateTimeSet(Reminder reminder, String dateTime){
+    public void dateTimeSet(Reminder reminder, String dateTime){
         String[] timeAndDate = dateTime.split(" ");
         String[] date = timeAndDate[0].split("/");
         reminder.setMonth(Integer.parseInt(date[0]));
@@ -93,5 +83,6 @@ public class ReminderGet {
         reminder.setMinute(Integer.parseInt(time[1]));
 
     }
+
 }
 

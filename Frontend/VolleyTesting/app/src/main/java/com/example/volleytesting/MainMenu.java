@@ -13,10 +13,13 @@ public class MainMenu extends AppCompatActivity {
     Button friends;
     Button eventsList;
     ImageButton profile;
+    Button messageButton;
     Button reminders;
     private String name;
+    /*    private String userName;//idk what this is doing. I took it from friends.java*/
 
     TextView nameOfUser;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,32 +27,35 @@ public class MainMenu extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         name = bundle.getString("name");
 
-        nameOfUser = findViewById(R.id.user_name);
+        /*        userName = getIntent().getExtras().getString("name");//idk what this is doing. I took it from friends.java*/
+
+        nameOfUser = findViewById(R.id.user_name);//idk what this is doing. I took it from friends.java
+
         nameOfUser.setText(name);
         //Init the buttons
         friendsButtonInit();
         profileInit();
         eventsListInit();
         remindersInit();
+        MessageButtonInit();
 
     }
 
-    private void friendsButtonInit()
-    {
+    private void friendsButtonInit() {
         friends = findViewById(R.id.friendsbutton);
         friends.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent friends = new Intent(getApplicationContext(), Friends.class);
-                friends.putExtra("name",name);
+                friends.putExtra("name", name);
                 startActivity(friends);
 
             }
         });
 
     }
-    private void profileInit()
-    {
+
+    private void profileInit() {
         profile = findViewById(R.id.profile);
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,8 +66,8 @@ public class MainMenu extends AppCompatActivity {
             }
         });
     }
-    private void eventsListInit()
-    {
+
+    private void eventsListInit() {
         eventsList = findViewById(R.id.eventsList);
         eventsList.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,16 +78,39 @@ public class MainMenu extends AppCompatActivity {
             }
         });
     }
-    private void remindersInit()
-    {
+
+    private void remindersInit() {
         reminders = findViewById(R.id.reminders);
         reminders.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent reminder = new Intent(getApplicationContext(), ReminderCreator.class);
-                reminder.putExtra("name",name);
+                reminder.putExtra("name", name);
                 startActivity(reminder);
             }
         });
     }
+    private void MessageButtonInit() {
+        messageButton = findViewById(R.id.messagebutton);
+            messageButton.setOnClickListener(new View.OnClickListener()
+    {
+        public void onClick (View view){
+        Intent Chat = new Intent(getApplicationContext(), Chat.class);
+        /*                chat.putExtra("name",userName);*/
+        startActivity(Chat);
+    }
+    });
+}
+/*        private void MessageButtonInit() {
+
+        messageButton = findViewById(R.id.messagebutton);
+        messageButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Intent ChatPage = new Intent(getApplicationContext(), Chat.class);
+               *//* ChatPage.putExtra("name",userName);*//*
+                startActivity(ChatPage);
+            }
+        });
+    }*/
 }

@@ -49,7 +49,7 @@ autoDeploy:
 # Ensure the tag matches with the tag created for Android runner
 # Android runner should have docker as executor.
 android-build:
-  image: gitlab-runner/android-ci:latest
+  image: javiersantos/android-ci:latest
   stage: androidbuild
   before_script:
     - export GRADLE_USER_HOME=`pwd`/.gradle
@@ -65,7 +65,7 @@ android-build:
     
 # To run Android unit tests.   
 unitTests:
-  image: gitlab-runner/android-ci:latest
+  image: javiersantos/android-ci:latest
   stage: androidtest
   before_script:
     - export GRADLE_USER_HOME=`pwd`/.gradle

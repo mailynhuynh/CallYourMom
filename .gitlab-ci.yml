@@ -1,7 +1,7 @@
 # Stages of pipeline, should match with stage tag inside each job.
 # Each stages executes in sequence, if previous job fails, then all the preceeding jobs are skipped.
 stages:
-  - mavenbuild
+ # - mavenbuild
   - maventest
   - autodeploy
   - androidbuild

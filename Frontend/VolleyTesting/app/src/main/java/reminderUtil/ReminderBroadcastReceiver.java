@@ -37,6 +37,7 @@ public class ReminderBroadcastReceiver extends BroadcastReceiver {
                 (this.titleInstance, this.locationInstance);
 
         reminderNotification.getManager().notify(1, notificationCB.build());
+        System.out.println("hola");
 
     }
 

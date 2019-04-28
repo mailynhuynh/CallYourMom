@@ -20,6 +20,7 @@ public class ReminderController {
 	 */
 	@GetMapping("/reminders")
 	List<Reminder> get() {
+		
 	    return reminderService.getAll();
 	}
 	
@@ -33,6 +34,7 @@ public class ReminderController {
 	    return reminderService.get(id);
 	}
 	
+	
 	/**
 	 * Adds a reminder
 	 * @param reminder
@@ -41,5 +43,14 @@ public class ReminderController {
 	@PostMapping("/reminders")
 	Reminder post(@RequestBody Reminder reminder) {
 	    return reminderService.create(reminder);
+	}
+	
+	/**
+	 * Get the most recent reminder 
+	 * @return
+	 */
+	@GetMapping("/reminders/mostRecent")
+	Reminder getMostRecent() {
+	    return reminderService.getMostRecent();
 	}
 }

@@ -7,14 +7,14 @@ CREATE TABLE IF NOT EXISTS Users (
   userName VARCHAR(20) NOT NULL,
   password VARCHAR(20) NOT NULL,
   address VARCHAR(255),
-  telephone VARCHAR(20),
+  telephone VARCHAR(20)
 ) engine=InnoDB;
 
 
 CREATE TABLE IF NOT EXISTS Friendship (
 id INTEGER(11) NOT NULL,
 friendId INTEGER(11) NOT NULL
-)
+);
 
 
 
@@ -23,15 +23,16 @@ CREATE TABLE IF NOT EXISTS Events(
   time VARCHAR(30) NOT NULL,
   title VARCHAR(30) NOT NULL,
   location VARCHAR(30) NOT NULL,
-  friendsInvited VARCHAR(100),
-  friendsGoing VARCHAR(100),
+  friends_invited VARCHAR(100),
+  friends_going VARCHAR(100),
+  tags VARCHAR(30),
   description VARCHAR(300)
 ) engine=InnoDB;
 
 
 
 CREATE TABLE IF NOT EXISTS Reminders(
-id INTEGER(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  id INTEGER(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   time VARCHAR(30) NOT NULL,
   title VARCHAR(30) NOT NULL,
   location VARCHAR(30) NOT NULL

@@ -26,6 +26,7 @@ public class ReminderGet {
      */
     private RequestQueue rq;
 
+    private Reminder r1;
     /**
      * @param url Url of server
      */

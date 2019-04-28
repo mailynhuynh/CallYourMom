@@ -25,6 +25,7 @@ import java.util.Calendar;
 
 import reminderUtil.Reminder;
 import reminderUtil.ReminderReceiver;
+import reminderUtil.ReminderSender;
 
 /**
  * @author ZoeS
@@ -32,6 +33,7 @@ import reminderUtil.ReminderReceiver;
 public class ReminderCreator extends AppCompatActivity {
 
     private String uri = "ws://cs309-bs-3.misc.iastate.edu:8080/websocket/", user;
+    private String url = "http://cs309-bs-3.misc.iastate.edu:8080/reminders";
     private Reminder reminder;
 
     private static String[] SPINNER_LIST = {"AM","PM"};
@@ -48,14 +50,16 @@ public class ReminderCreator extends AppCompatActivity {
         username = findViewById(R.id.userName);
         user = getIntent().getExtras().getString("name");
         uri += user;
+        /*
         try {
             webSocketConnect();
         } catch (URISyntaxException e) {
             e.printStackTrace();
         }
-
+        */
         initFields();
         createPress();
+        /*
         sendToUser = findViewById(R.id.tag);
         sendToUser.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.KITKAT)
@@ -64,9 +68,10 @@ public class ReminderCreator extends AppCompatActivity {
                 pressSendToUser();
             }
         });
-
+         **/
 
     }
+
 
     /**
      * Method to connect the websocket
@@ -193,6 +198,9 @@ public class ReminderCreator extends AppCompatActivity {
         reminder.setLocation(location);
 
         reminder.setReminder(this);
+        ReminderSender rSender = new ReminderSender(reminder, url);
+        rSender.sendReminder(this);
+
         easyToast("Alarm created");
 
     }

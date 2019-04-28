@@ -80,7 +80,7 @@ public class Chat extends AppCompatActivity {
 
 
         //Init the buttons
-        /**
+        /*
          BackButtonInit();
          FriendProfileInit();
          MessageButtonInit();

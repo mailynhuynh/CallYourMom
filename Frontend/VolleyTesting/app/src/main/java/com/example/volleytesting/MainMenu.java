@@ -14,6 +14,7 @@ public class MainMenu extends AppCompatActivity {
     Button events;
     ImageButton profile;
     Button reminders;
+    Button reminderList;
     private String name;
 
     TextView nameOfUser;
@@ -31,6 +32,7 @@ public class MainMenu extends AppCompatActivity {
         profileInit();
         eventsInit();
         remindersInit();
+        reminderListInit();
 
     }
 
@@ -79,6 +81,17 @@ public class MainMenu extends AppCompatActivity {
                 Intent reminder = new Intent(getApplicationContext(), ReminderCreator.class);
                 reminder.putExtra("name",name);
                 startActivity(reminder);
+            }
+        });
+    }
+    private void reminderListInit()
+    {
+        reminderList = findViewById(R.id.reminderList);
+        reminderList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent reminderList = new Intent(getApplicationContext(), RemindersList.class);
+                startActivity(reminderList);
             }
         });
     }

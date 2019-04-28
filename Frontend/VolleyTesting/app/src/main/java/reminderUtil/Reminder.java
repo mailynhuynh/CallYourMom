@@ -167,12 +167,23 @@ public class Reminder {
 
     public int getYear() { return year; }
 
+    /**
+     *
+     * @return
+     *      Date-time of Reminde in String format.
+     */
+    public String getDateTime(){
+        String dateTime = getMonth()+"/"+getDay()+"/"+getYear()+" "
+                +getHour()+":"+getMinute();
+        return dateTime;
+    }
+
 
     /**
      * Returns the date in miliseconds. Needed for creating reminder alert.
      * @return
      */
-    public long reminderTimeInMillis()
+    private long reminderTimeInMillis()
     {
         String dateStr = getYear()+"/"+getMonth()+"/"+getDay()+
                 " "+getHour()+":"+getMinute()+":00";
@@ -188,6 +199,16 @@ public class Reminder {
 
     }
 
+    /**
+     *
+     * @return
+     *  String representation of Reminder.
+     */
+    @Override
+    public String toString(){
+        String str = getTitle()+" at "+getLocation()+" "+getDateTime();
+        return str;
+    }
     /**
      * Override for reminder equals()
      * @param o

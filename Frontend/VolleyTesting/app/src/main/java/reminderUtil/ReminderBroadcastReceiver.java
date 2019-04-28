@@ -12,8 +12,14 @@ import android.support.v7.app.AppCompatActivity;
 
 public class ReminderBroadcastReceiver extends BroadcastReceiver {
 
+    /**
+     * Made static so values can be passed to this class without an instance.
+     */
     static String title;
     static String location;
+    /**
+     * Non-static versions
+     */
     private String titleInstance;
     private String locationInstance;
 

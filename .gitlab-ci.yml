@@ -12,7 +12,7 @@ stages:
 maven-build:
   stage: mavenbuild
   tags:
-    - test_frontend
+    - test_backend
   script:
     - cd Spring
     - mvn package -B
@@ -22,7 +22,7 @@ maven-build:
 maven-test:
   stage: maventest
   tags:
-    - test_frontend
+    - test_backend
   script:
     - cd Spring
     - mvn test
@@ -35,7 +35,7 @@ maven-test:
 autoDeploy:
   stage: autodeploy
   tags:
-   - test_frontend
+   - test_backend
   script:
     - cd Spring
     - mvn package
@@ -49,7 +49,7 @@ autoDeploy:
 # Ensure the tag matches with the tag created for Android runner
 # Android runner should have docker as executor.
 android-build:
-  image: javiersantos/android-ci:latest
+  image: ../android-ci:latest
   stage: androidbuild
   before_script:
     - export GRADLE_USER_HOME=`pwd`/.gradle
@@ -65,7 +65,7 @@ android-build:
     
 # To run Android unit tests.   
 unitTests:
-  image: mailyns/android-ci:latest
+  image: ../android-ci:latest
   stage: androidtest
   before_script:
     - export GRADLE_USER_HOME=`pwd`/.gradle

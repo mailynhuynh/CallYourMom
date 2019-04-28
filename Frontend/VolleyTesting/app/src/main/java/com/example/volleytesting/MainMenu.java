@@ -15,6 +15,7 @@ public class MainMenu extends AppCompatActivity {
     ImageButton profile;
     Button messageButton;
     Button reminders;
+    Button reminderList;
     private String name;
     /*    private String userName;//idk what this is doing. I took it from friends.java*/
 
@@ -37,7 +38,10 @@ public class MainMenu extends AppCompatActivity {
         profileInit();
         eventsListInit();
         remindersInit();
+        reminderListInit();
+
         MessageButtonInit();
+
 
     }
 
@@ -90,6 +94,19 @@ public class MainMenu extends AppCompatActivity {
             }
         });
     }
+
+    private void reminderListInit()
+    {
+        reminderList = findViewById(R.id.reminderList);
+        reminderList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent reminderList = new Intent(getApplicationContext(), RemindersList.class);
+                startActivity(reminderList);
+            }
+        });
+    }
+
     private void MessageButtonInit() {
         messageButton = findViewById(R.id.messagebutton);
             messageButton.setOnClickListener(new View.OnClickListener()

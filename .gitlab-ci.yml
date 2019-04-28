@@ -53,11 +53,11 @@ android-build:
   stage: androidbuild
   before_script:
     - export GRADLE_USER_HOME=`pwd`/.gradle
-    - chmod +x ./FrontEnd/VolleyTesting/gradlew
+    - chmod +x ./Frontend/VolleyTesting/gradlew
   tags:
    - android_tag 
   script:
-    - cd FrontEnd/VolleyTesting
+    - cd Frontend/VolleyTesting
     - ./gradlew assemble
   artifacts:
     paths:
@@ -69,9 +69,9 @@ unitTests:
   stage: androidtest
   before_script:
     - export GRADLE_USER_HOME=`pwd`/.gradle
-    - chmod +x ./FrontEnd/VolleyTesting/gradlew
+    - chmod +x ./Frontend/VolleyTesting/gradlew
   tags:
    - android_tag
   script:
-    - cd FrontEnd/VolleyTesting
+    - cd Frontend/VolleyTesting
     - ./gradlew test

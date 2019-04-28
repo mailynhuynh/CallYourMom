@@ -65,15 +65,13 @@ public class ReminderService {
 		String[] dateA = A.split("/");
 		String[] dateB = B.split("/");
 		
-		
-
-		if (Integer.valueOf(dateA[2]) > (Integer.valueOf(dateB[2]))) {
+		if (Integer.valueOf(dateA[2]) < (Integer.valueOf(dateB[2]))) {
 			return true;
 		}else if (Integer.valueOf(dateA[2]) ==  (Integer.valueOf(dateB[2]))) {
-			if (Integer.valueOf(dateA[0]) > (Integer.valueOf(dateB[0]))) {
+			if (Integer.valueOf(dateA[0]) < (Integer.valueOf(dateB[0]))) {
 				return true;
-			}else if (Integer.valueOf(dateA[0]) ==  (Integer.valueOf(dateB[0])))
-				if (Integer.valueOf(dateA[1]) > (Integer.valueOf(dateB[1]))) {
+			} else if (Integer.valueOf(dateA[0]) ==  (Integer.valueOf(dateB[0]))) {
+				if (Integer.valueOf(dateA[1]) < (Integer.valueOf(dateB[1]))) 
 					return true;
 				}
 			}
@@ -85,10 +83,10 @@ public class ReminderService {
 		String[] dateA = A.split(":");
 		String[] dateB = B.split(":");
 
-		if (Integer.valueOf(dateA[0]) > (Integer.valueOf(dateB[0]))) {
+		if (Integer.valueOf(dateA[0]) < (Integer.valueOf(dateB[0]))) {
 			return true;
 		}else if (Integer.valueOf(dateA[0]) == (Integer.valueOf(dateB[0]))) {
-			if (Integer.valueOf(dateA[1]) > (Integer.valueOf(dateB[1]))) {
+			if (Integer.valueOf(dateA[1]) < (Integer.valueOf(dateB[1]))) {
 				return true;
 			}
 		}

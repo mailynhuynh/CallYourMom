@@ -51,6 +51,10 @@ public class ReminderService {
 				mostRecent = all.get(i);
 			}
 		}
+		
+		reminderRepository.delete(mostRecent);
+		
+		
 		return mostRecent;
 	}
 

@@ -28,7 +28,34 @@ public class ReminderService {
 		return reminderRepository.save(reminder);
 	}
 
-	public Reminder getMostRecent() {
+	public Reminder getMostRecentWithoutDelete() {
+		List<Reminder> all = reminderRepository.findAll();
+		
+// 		DEBUG:
+//		Reminder A = new Reminder();
+//		A.setTime("4/22/2019 7:00");
+//		Reminder B = new Reminder();
+//		B.setTime("4/22/2019 11:00");
+//		Reminder C = new Reminder();
+//		C.setTime("4/25/2019 9:00");
+//
+//		all.add(A);
+//		all.add(B);
+//		all.add(C);
+
+		Reminder mostRecent = all.get(0);
+
+		for (int i = 1; i < all.size(); i++) {
+
+			if (earlier(all.get(i), mostRecent)) {
+				mostRecent = all.get(i);
+			}
+		}
+		
+		
+		return mostRecent;
+	}
+	public Reminder getMostRecentWithDelete() {
 		List<Reminder> all = reminderRepository.findAll();
 		
 // 		DEBUG:

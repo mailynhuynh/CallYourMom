@@ -49,8 +49,17 @@ public class ReminderController {
 	 * Get the most recent reminder 
 	 * @return
 	 */
-	@GetMapping("/reminders/mostRecent")
-	Reminder getMostRecent() {
-	    return reminderService.getMostRecent();
+	@GetMapping("/reminders/mostRecentWithDelete")
+	Reminder getMostRecentWithDelete() {
+	    return reminderService.getMostRecentWithDelete();
+	}
+	
+	/**
+	 * Get the most recent reminder 
+	 * @return
+	 */
+	@GetMapping("/reminders/mostRecentWithoutDelete")
+	Reminder getMostRecentWithoutDelete() {
+	    return reminderService.getMostRecentWithoutDelete();
 	}
 }

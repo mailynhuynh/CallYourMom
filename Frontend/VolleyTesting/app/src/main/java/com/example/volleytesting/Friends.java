@@ -30,6 +30,7 @@ public class Friends extends AppCompatActivity {
     private String userName;
     Button back;
     Button getFriends;
+    Button friendProfile;
     TextView friends;
 
     @SuppressLint("WrongViewCast")
@@ -41,6 +42,8 @@ public class Friends extends AppCompatActivity {
         friends = findViewById(R.id.friends);
         //Back button
         back = findViewById(R.id.backb);
+        //friend profile
+/*        friendProfile = findViewById(R.id.friendprofile);*/
 
 
 
@@ -71,6 +74,7 @@ public class Friends extends AppCompatActivity {
                 parseJSONFriends();
             }
         });
+        friendProfileInit();
 
 
     }
@@ -131,5 +135,17 @@ public class Friends extends AppCompatActivity {
             }
         });
         rq.add(arrayRequest);
+    }
+
+    private void friendProfileInit() {
+        friendProfile = findViewById(R.id.friendprofile);
+        friendProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent friend_profile = new Intent(getApplicationContext(), Friend_Profile.class);
+                /*reminder.putExtra("name",name);*/
+                startActivity(friend_profile);
+            }
+        });
     }
 }

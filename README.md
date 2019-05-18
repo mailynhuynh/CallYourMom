@@ -1,2 +1,1 @@
-# Team_7
-
+# CallYourMom Android Appication
